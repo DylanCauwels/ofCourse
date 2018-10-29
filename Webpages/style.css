@@ -1,0 +1,80 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #ffffff;
+}
+
+h1 {
+	font-family: Times;
+	//font-size: 105%;
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+}
+
+td {
+	border: 1px solid black;
+}
+
+.main_title {
+	color: Black;
+	font-family: Geneva, sans-serif;
+}
+
+#title_tab {
+	background-color: #ecf4ec;
+	padding-top: 2pt;
+	padding-bottom: 3pt;
+	text-align="center";
+	display: flex;
+	justify-content: center;
+}
+
+.body_text {
+	font-family: Geneva;
+}
+
+img {
+	padding-top: 13pt;
+	padding-right: 20pt;
+}
+
+p {
+	font-family: Geneva, sans-serif!important;
+}
+
+.button {
+	font-family: Geneva, sans-serif!important;
+	font-size: 22px;
+	text-decoration: bold;
+}
+
+.post_title {
+	font-size: 24px;
+	font-family: Geneva, sans-serif!important;
+	color: Black;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-areas:
+		'professors courses classes';
+	grid-gap: 10px;
+	padding: 10px;
+	padding-left: 125px;
+	padding-right: 125px;
+}
+
+#menu1 {grid-area: professors;}
+#menu2 {grid-area: courses;}
+#menu3 {grid-area: classes;}
+
+
+
+
+
