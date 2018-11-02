@@ -1,80 +1,62 @@
-html, body {
+ul {
 	margin: 0;
 	padding: 0;
-}
-
-body {
-	background-color: #ffffff;
-}
-
-h1 {
-	font-family: Times;
-	//font-size: 105%;
-	text-align: center;
 }
 
 a {
 	text-decoration: none;
 }
 
-td {
-	border: 1px solid black;
+a.menu {
+	color: white;
 }
 
-.main_title {
-	color: Black;
-	font-family: Geneva, sans-serif;
+li {
+	display: inline;
+	margin: 40px;
+	font-size: 15px;
+	font-family: "Verdana", Times, serif;
+	position: relative;
+	top: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	color: white;
 }
 
-#title_tab {
-	background-color: #ecf4ec;
-	padding-top: 2pt;
-	padding-bottom: 3pt;
-	text-align="center";
-	display: flex;
-	justify-content: center;
+div, p, button, input {
+	position: relative;
+	top: 45px;
 }
 
-.body_text {
-	font-family: Geneva;
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: #4c5c7e;
+	border-bottom: solid 2px #da8661;
+	margin-bottom: 10px;
+	padding-bottom: 20px;
+	position: fixed;
+	z-index: 100;
 }
 
-img {
-	padding-top: 13pt;
-	padding-right: 20pt;
+#home {
+	background: #637496;
 }
 
-p {
-	font-family: Geneva, sans-serif!important;
+#logo {
+	font-size: 25px;
+	font-style: italic;
+	font-family: "Verdana", Times, serif;
+	display: inline;
+	position: fixed;
+	left: 20px;
+	top: -15px;
 }
 
-.button {
-	font-family: Geneva, sans-serif!important;
-	font-size: 22px;
-	text-decoration: bold;
+#user {
+	position: relative;
+	top: 20px;
+	bottom: 10px;
 }
-
-.post_title {
-	font-size: 24px;
-	font-family: Geneva, sans-serif!important;
-	color: Black;
-}
-
-.grid-container {
-	display: grid;
-	grid-template-areas:
-		'professors courses classes';
-	grid-gap: 10px;
-	padding: 10px;
-	padding-left: 125px;
-	padding-right: 125px;
-}
-
-#menu1 {grid-area: professors;}
-#menu2 {grid-area: courses;}
-#menu3 {grid-area: classes;}
-
-
-
-
-
