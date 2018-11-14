@@ -7,7 +7,7 @@ public class DatabaseConnection {
 	final private String user = "administrator";
 	final private String password = "password";
 	private Connection conn;
-	private DatabaseConnection databaseConnection = new DatabaseConnection();
+	private static DatabaseConnection databaseConnection = new DatabaseConnection();
 	
 	
 	private DatabaseConnection(){
