@@ -1,4 +1,7 @@
+package ofCourse;
+
 import java.util.ArrayList;
+
 public class Section {
 	private int uniqueId;
 	private ArrayList<String> classDay;
