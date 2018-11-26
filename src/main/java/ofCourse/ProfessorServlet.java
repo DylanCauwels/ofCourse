@@ -9,6 +9,6 @@ import ofCourse.Professor;
 public class ProfessorServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Professor prof = new Professor("test");
-		resp.sendRedirect("/professors.jsp?test=" + prof.testServlet());	
+		resp.sendRedirect("/index.jsp?test=" + prof.testServlet());	
 	}
 }

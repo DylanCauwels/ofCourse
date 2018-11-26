@@ -53,13 +53,13 @@
 	  	<p>Search here for a specific Professor here:</p>	
 	  	<input/>
 	  	<button>Search</button>
-	  	
+<!-- 	  	
 	  	<ul align="left">
 	  		<li>Angela A. Aaronson</li>
 	  		<li>Brian B. Barksdale</li>
 	  		<li>Ciara C. Cortez</li>
 	  	</ul>
-	  	
+	  	 -->
 
 
 		

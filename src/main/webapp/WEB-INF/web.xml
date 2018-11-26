@@ -5,20 +5,20 @@
          version="3.1">
   <servlet>
   	<servlet-name>Professors</servlet-name>
-  	<servlet-class>ProfessorServlet</servlet-class>
+  	<servlet-class>ofCourse.ProfessorServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>Professors</servlet-name>
   	<url-pattern>/professors</url-pattern>
   </servlet-mapping>
-<!--   <servlet>
+<!-- 	<servlet>
   	<servlet-name>Schedule</servlet-name>
-  	<servlet-class>ScheduleServlet</servlet-class>
+  	<servlet-class>ofCourse.ScheduleServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>Schedule</servlet-name>
   	<url-pattern>/schedule</url-pattern>
-  </servlet-mapping> -->
+  </servlet-mapping>  -->
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
