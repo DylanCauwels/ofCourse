@@ -6,12 +6,11 @@ public class DatabaseConnection {
 	final private String url = "jdbc:postgresql://softwarelabinstance.ct09nasdzura.us-east-1.rds.amazonaws.com/postgres";
 	final private String user = "administrator";
 	final private String password = "password";
-	private Connection conn;
+	private static Connection conn;
 	private static DatabaseConnection databaseConnection = new DatabaseConnection();
 	
 	
 	private DatabaseConnection(){
-		conn = null;
 	    try {
 	        conn = DriverManager.getConnection(url, user, password);
 	        System.out.println("Connected to the PostgreSQL server successfully.");
@@ -20,8 +19,7 @@ public class DatabaseConnection {
 	    }
 	}
 	
-	public static DatabaseConnection getInstance() {
-		return databaseConnection;
+	public static Connection getConnection() {
+		return conn;
 	}
-	
 }

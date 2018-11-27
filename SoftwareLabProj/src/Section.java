@@ -32,25 +32,25 @@ public class Section {
 	}
 	
 	public boolean isConflict(Section otherSection) {
-		String[] timeOne = startTime.split(":");
-		String[] timeTwo = otherSection.startTime.split(":");
-		int startOne = Integer.parseInt(timeOne[0]);
-		int endOne = Integer.parseInt(timeOne[1]);
-		int startTwo = Integer.parseInt(timeTwo[0]);
-		int endTwo = Integer.parseInt(timeTwo[1]);
+		String[] startOne = startTime.split(":");
+		String[] startTwo = otherSection.startTime.split(":");
+		int startOneHour = Integer.parseInt(startOne[0]);
+		int startOneMin = Integer.parseInt(startOne[1]);
+		int startTwoHour = Integer.parseInt(startTwo[0]);
+		int startTwoMin = Integer.parseInt(startTwo[1]);
 		
-		if((startOne == startTwo) && (startOne == endTwo) && (startAMPM == endAMPM)) {
+		if((startOneHour == startTwoHour) && (startOneMin == startTwoMin) && (startAMPM == endAMPM)) {
 			return true;
 		}
 		
-		if(startOne == 12) {	//assumes classes ends at :00 or :30 at a hour
-			if(endOne == 0) {
+		if(startOneHour == 12) {	//assumes classes ends at :00 or :30 at a hour
+			if(startOneMin == 0) {
 				
-			}else if(endOne == 30) {
+			}else if(startOneMin == 30) {
 				
 			}
 		}
-		if(Integer.parseInt(timeOne[0]) < 12) {
+		if(Integer.parseInt(startOne[0]) < 12) {
 			
 		}
 		
