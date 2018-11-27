@@ -1,3 +1,4 @@
+package ofCourse;
 
 public class Review {
 	private String source;

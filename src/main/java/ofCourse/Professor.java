@@ -1,7 +1,10 @@
+package ofCourse;
+
 import java.util.ArrayList;
+
 public class Professor {
 	private String name;
-	private ArrayList<Review> reviews;
+	private ArrayList<Review> reviews = new ArrayList<>();
 	
 	Professor(String name){
 		this.name = name;
@@ -17,7 +20,10 @@ public class Professor {
 				return;
 			}
 		}
-		
 		reviews.add(newReview);
+	}
+	
+	public String testServlet() {
+		return "Servlet Working";
 	}
 }

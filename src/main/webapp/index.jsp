@@ -37,47 +37,30 @@
 			<a href="index.jsp" class="main_title">ofCourse</a>
 		</h1>
 	</div>
-	  
 	  	<!-- PAGE CONTENT -->	
 	  	<div class="body_text">
 	  		<p>ofCourse is a course scheduling and class information platform for students at the University of Texas at Austin. ofCourse allows you to choose the classes, professors, and schedule that best suits your needs.</p>
 	  	</div>
-	  	
+	  	<%	String test = request.getParameter("test");
+	  		pageContext.setAttribute("test", test);   %> 	
 	  	<%
 	  		UserService userService = UserServiceFactory.getUserService();
-
 	    	User user = userService.getCurrentUser();
-		
 		    if (user != null) {
-		
 		      pageContext.setAttribute("user", user);
-		
 		%>
-		
-						<p id="user" >User: ${fn:escapeXml(user.nickname)}</p>
-		
-						<a id="user" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Sign out</a>
-		
+			<p id="user" >User: ${fn:escapeXml(user.nickname)}</p>
+			<a id="user" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Sign out</a>
 		<%
-		
 		    } else {
-		
 		%>
-						<a id="user" href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
-		
+			<a id="user" href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
 		<%
-		
 		    }
-		
 		%>
-	  	
-	  	
-	  	
-
-
-
-
-
+	    <form action="/professors" method="post">
+	      <div><input type="submit" value="Post" /></div>
+	    </form>
+		<p> test: ${fn:escapeXml(test)} </p>
 	</body>
-
 </html>
