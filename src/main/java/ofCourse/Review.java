@@ -2,14 +2,11 @@ package ofCourse;
 
 public class Review {
 	private String source;
-	private int rating;
-	private int ratingScale;
-	private int fixedRating;
+	private RatingType ratingType;
 	
-	Review(String source, int rating, int ratingScale){
+	Review(String source, RatingType ratingType){
 		this.source = source;
-		this.rating = rating;
-		this.ratingScale = ratingScale;
+		this.ratingType = ratingType;
 	}
 	
 	String getSource() {
@@ -17,24 +14,17 @@ public class Review {
 	}
 	
 	int getRating() {
-		return rating;
+		return ratingType.getRating();
 	}
 	
-	int getRatingScale() {
-		return ratingScale;
-	}
+
 	
-	int getFixedRating() {
-		return fixedRating;
-	}
-	
-	boolean update(String source, int rating, int ratingScale) {
+	boolean update(String source, int rating) {
 		if(!this.source.equals(source)) {
 			return false;
 		}
 		
-		this.rating = rating;
-		this.ratingScale = ratingScale;
+		ratingType.setScore(rating);
 		
 		return true;
 	}
