@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Section {
 	private int uniqueId;
-	private ArrayList<String> classDay;
+	private ArrayList<Integer> classDay = new ArrayList<Integer>(7);
 	private String startTime;
 	private String startAMPM;
 	private String endTime;
@@ -34,7 +34,7 @@ public class Section {
 		this.open = open;
 	}
 	
-	public boolean isConflict(Section otherSection) {
+	public boolean isConflict(Section otherSection) {//not yet complete, is kind of wrong
 		String[] startOne = startTime.split(":");
 		String[] startTwo = otherSection.startTime.split(":");
 		int startOneHour = Integer.parseInt(startOne[0]);
@@ -58,5 +58,34 @@ public class Section {
 		}
 		
 		return false;
+	}
+	
+	public void setClassDay(String classDays) {
+		for(int i = 0 ; i < this.classDay.size() ; i++) {
+			this.classDay.set(i, new Integer(0));
+		}
+		
+		for(int i = 0 ; i < classDays.length() ; i++) {
+			if(classDays.charAt(i) == 'M') {
+				this.classDay.set(1, new Integer(1));
+			}
+			
+			if(classDays.charAt(i) == 'T') {
+				if(classDays.charAt(i + 1) == 'h') {
+					this.classDay.set(4, new Integer(1));
+				}else {
+					this.classDay.set(2, new Integer(1));
+				}
+			}
+			
+			if(classDays.charAt(i) == 'W') {
+				this.classDay.set(3, new Integer(1));
+			}
+			
+			if(classDays.charAt(i) == 'F') {
+				this.classDay.set(5, new Integer(1));
+			}
+			
+		}
 	}
 }
