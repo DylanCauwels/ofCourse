@@ -1,3 +1,4 @@
+package ofCourse; 
 
 public interface RatingType {
 
