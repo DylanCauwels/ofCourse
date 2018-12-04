@@ -31,16 +31,19 @@
 
 
 
-<body align="center">
-	<div class="header">
-		<h1 id="logo"><a class="menu" href=index.jsp>ofCourse</a></h1>
-		<ul>
-			<li id="home"><a class="menu" href=professors.jsp>Professors</a></li>
-			<li><a class="menu" href=courses.jsp>Courses</a></li>
-			<li><a class="menu" href=schedule.jsp>Schedule</a></li>
-			<li><a>Contact Us</a></li>
-		</ul>
-	</div>
+  	<body align="center">
+		<!-- HEADER MENU -->
+  		<div class="grid-container">
+  			<div id="menu1">
+  				<p><a href="professors.jsp">Professors</a></p>
+  			</div>
+  			<div id="menu2">
+  				<p><a href="courses.jsp">Courses</a></p>
+  			</div>
+  			<div id="menu3">
+  				<p><a href="schedule.jsp">Schedule</a></p>
+  			</div>
+  		</div>
   	
   		<div align="center">
 			<h1>
