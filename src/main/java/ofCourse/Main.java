@@ -11,18 +11,18 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Connection conn = DatabaseConnection.getConnection();
+		DatabaseConnection dbConn = DatabaseConnection.getInstance();
+		Connection conn = dbConn.getConnection();
 		
 		try{
 			Statement statement =  conn.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT \"lecture-days\" FROM \"software-lab\".registrar");
-			/*
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM softwarelab.registrar");
+			
 			while(resultSet.next()) {
-				System.out.println("ass");
-				System.out.println(resultSet.getString(0));
+				System.out.println(resultSet.getString(2) + " " + resultSet.getString("lecture-end"));
 				
 			}
-			*/
+			
 		}catch(Exception e){
 			System.out.println(e);
 		}

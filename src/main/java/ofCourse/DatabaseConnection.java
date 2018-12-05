@@ -9,16 +9,23 @@ public class DatabaseConnection {
 	final private String user = "administrator";
 	final private String password = "password";
 	private static Connection conn;
-	private static DatabaseConnection databaseConnection = new DatabaseConnection();
+	private static DatabaseConnection databaseConnection;
 	
 	
 	private DatabaseConnection(){
 	    try {
 	        conn = DriverManager.getConnection(url, user, password);
 	        System.out.println("Connected to the PostgreSQL server successfully.");
-	    } catch (SQLException e) {
+	    } catch (Exception e) {
 	        System.out.println(e.getMessage());
 	    }
+	}
+	
+	public static DatabaseConnection getInstance() {
+		if(databaseConnection == null) {
+			databaseConnection = new DatabaseConnection();
+		}
+		return databaseConnection;
 	}
 	
 	public static Connection getConnection() {

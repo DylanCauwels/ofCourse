@@ -1,10 +1,11 @@
 package ofCourse;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Section {
 	private int uniqueId;
-	private ArrayList<Integer> classDay = new ArrayList<Integer>(7);
+	private ArrayList<Integer> classDay = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0, 0));
 	private String startTime;
 	private String startAMPM;
 	private String endTime;
@@ -12,11 +13,12 @@ public class Section {
 	private boolean waitlisted;
 	private boolean open;
 	
-	public Section(int uniqueId, ArrayList<String> classDay,String startTime, String endTime, boolean waitlisted, boolean open){
+	public Section(int uniqueId, String classDays,String startTime, String endTime, boolean waitlisted, boolean open){
 		String[] startTimeValues = startTime.split(" ");
 		String[] endTimeValues = endTime.split(" ");
 		this.uniqueId = uniqueId;
-		this.classDay = classDay;
+		this.setClassDay(classDays);
+		/*
 		this.startTime = startTimeValues[0];
 		this.startAMPM = startTimeValues[1];
 		this.endTime = endTimeValues[0];
@@ -24,6 +26,11 @@ public class Section {
 		this.endTime = endTime;
 		this.waitlisted = waitlisted;
 		this.open = open;
+		*/
+	}
+	
+	public ArrayList<Integer> getClassDay() {
+		return classDay;
 	}
 	
 	public void setWaitlist(boolean value) {
@@ -61,29 +68,23 @@ public class Section {
 	}
 	
 	public void setClassDay(String classDays) {
-		for(int i = 0 ; i < this.classDay.size() ; i++) {
+		for(int i = 0 ; i < 7 ; i++) {
 			this.classDay.set(i, new Integer(0));
 		}
 		
 		for(int i = 0 ; i < classDays.length() ; i++) {
 			if(classDays.charAt(i) == 'M') {
-				this.classDay.set(1, new Integer(1));
-			}
-			
-			if(classDays.charAt(i) == 'T') {
+				classDay.set(1, new Integer(1));
+			}else if(classDays.charAt(i) == 'T') {
 				if(classDays.charAt(i + 1) == 'h') {
-					this.classDay.set(4, new Integer(1));
+					classDay.set(4, new Integer(1));
 				}else {
-					this.classDay.set(2, new Integer(1));
+					classDay.set(2, new Integer(1));
 				}
-			}
-			
-			if(classDays.charAt(i) == 'W') {
-				this.classDay.set(3, new Integer(1));
-			}
-			
-			if(classDays.charAt(i) == 'F') {
-				this.classDay.set(5, new Integer(1));
+			}else if(classDays.charAt(i) == 'W') {
+				classDay.set(3, new Integer(1));
+			}else if(classDays.charAt(i) == 'F') {
+				classDay.set(5, new Integer(1));
 			}
 			
 		}
