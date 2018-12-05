@@ -9,7 +9,7 @@ public class DatabaseConnection {
 	final private String user = "administrator";
 	final private String password = "password";
 	private static Connection conn;
-	private static DatabaseConnection databaseConnection;
+	private static DatabaseConnection databaseConnection = new DatabaseConnection();
 	
 	
 	private DatabaseConnection(){
@@ -22,9 +22,6 @@ public class DatabaseConnection {
 	}
 	
 	public static DatabaseConnection getInstance() {
-		if(databaseConnection == null) {
-			databaseConnection = new DatabaseConnection();
-		}
 		return databaseConnection;
 	}
 	
