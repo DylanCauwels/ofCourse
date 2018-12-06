@@ -43,5 +43,43 @@ public class DatabaseConnectionTest {
 			fail(e.toString());
 		}
 	}
+	
+	@Test
+	public void testGetResultSetAllColumns() {
+		try {
+			DatabaseConnection dbConn = DatabaseConnection.getInstance();
+			String column = "*";
+			ResultSet resultSet = dbConn.getResultSet(column);
+			assertNotNull(resultSet);
+		}catch(Exception e) {
+			fail(e.toString());
+		}
+	}
+	
+	@Test
+	public void testGetResultSetColumn() {
+		try {
+			DatabaseConnection dbConn = DatabaseConnection.getInstance();
+			String column = "unique-number";
+			ResultSet resultSet = dbConn.getResultSet(column);
+			assertNotNull(resultSet);
+		}catch(Exception e) {
+			fail(e.toString());
+		}
+	}
+	
+	@Test
+	public void getRowResultSetTest() {
+		try {
+			DatabaseConnection dbConn = DatabaseConnection.getInstance();
+			String column = "unique-number";
+			String value = "310";
+			ResultSet resultSet = dbConn.getRowResultSet(column, value);
+			assertNotNull(resultSet);
+		}catch(Exception e) {
+			fail(e.toString());
+		}
+	}
+	
 
 }
