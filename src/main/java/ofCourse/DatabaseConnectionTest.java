@@ -75,7 +75,8 @@ public class DatabaseConnectionTest {
 			String column = "unique-number";
 			String value = "310";
 			ResultSet resultSet = dbConn.getRowResultSet(column, value);
-			assertNotNull(resultSet);
+			assertEquals(resultSet.getString("\"unique-number\""), "310");
+			//assertNotNull(resultSet);
 		}catch(Exception e) {
 			fail(e.toString());
 		}
