@@ -64,7 +64,7 @@ p {
 .grid-container {
 	display: grid;
 	grid-template-areas:
-		'professors courses classes';
+		'logo professors courses classes';
 	grid-gap: 10px;
 	padding: 10px;
 	padding-left: 125px;
