@@ -10,15 +10,11 @@ def connectToDB(dbname, host, username, password):
     return None
 
 # inserts a new section into the registrar table. Pass in None to the LabDays parameter if there is no Lab.
-def insertNewSection(UniqueNumber, LectureDays, LectureStart, LectureEnd, LabDays, LabStart, LabEnd, LastName, FirstInitial, Prefix, Number):
+def insertNewSection(UniqueNumber, LectureDays, LectureStart, LectureEnd, LastName, FirstInitial, Prefix, Number):
     DBConn = connectToDB('postgres', 'softwarelabinstance.ct09nasdzura.us-east-1.rds.amazonaws.com', 'administrator', 'password')
     DB = DBConn.cursor()
-    if not LabDays:
-        DB.execute("""INSERT INTO softwarelab.registrar ("unique-number", "lecture-days", "lecture-start", "lecture-end", "professor-last-name", "professor-first-initial", prefix, "number")
+    DB.execute("""INSERT INTO softwarelab.registrar ("unique-number", "lecture-days", "lecture-start", "lecture-end", "professor-last-name", "professor-first-initial", prefix, "number")
                     VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s')""" % (UniqueNumber, LectureDays, LectureStart, LectureEnd, LastName, FirstInitial, Prefix, Number))
-    else:
-        DB.execute("""INSERT INTO softwarelab.registrar ("unique-number", "lecture-days", "lecture-start", "lecture-end", "lab-day", "lab-start", "lab-end", "professor-last-name", "professor-first-initial", prefix, "number")
-                    VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')""" % (UniqueNumber, LectureDays, LectureStart, LectureEnd, LabDays, LabStart, LabEnd, LastName, FirstInitial, Prefix, Number))
     DBConn.commit()
 
 # updates an existing entry with the RMP rating based on last name and first initial
