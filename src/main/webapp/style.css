@@ -74,9 +74,10 @@ p {
 }
 
 .curr {
-	background-color: #737C89;
+	background-color: #7B7E82;
 }
 
+#menu0 {grid-area: logo}
 #menu1 {grid-area: professors;}
 #menu2 {grid-area: courses;}
 #menu3 {grid-area: classes;}
