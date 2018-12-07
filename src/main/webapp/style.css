@@ -73,6 +73,10 @@ p {
 	text-color: White;
 }
 
+.curr {
+	background-color: #737C89;
+}
+
 #menu1 {grid-area: professors;}
 #menu2 {grid-area: courses;}
 #menu3 {grid-area: classes;}
@@ -81,6 +85,3 @@ p {
 	font-family:Tahoma;
 	color: blue;
 }
-
-
-
