@@ -28,11 +28,13 @@ def updateRMP(LastName, FirstInitial, Rating):
     DBConn.commit()
 
 # updates an existing entry with the CIS rating based on the last name and first initial
-def updateCIS(LastName, FirstInitial, Rating):
+def updateCIS(LastName, FirstInitial, Prefix, Number, Rating):
     DBConn = connectToDB('postgres', 'softwarelabinstance.ct09nasdzura.us-east-1.rds.amazonaws.com', 'administrator', 'password')
     DB = DBConn.cursor()
     DB.execute("""UPDATE softwarelab.registrar
                     SET "cis-grade-distribution" = '%s'
                     WHERE "professor-last-name" = '%s'
-                    AND "professor-first-initial" = '%s'""" % (Rating, LastName, FirstInitial))
+                    AND "professor-first-initial" = '%s'
+                    AND prefix = '%s'
+                    AND "number" = '%s' """ % (Rating, LastName, FirstInitial, Prefix, Number))
     DBConn.commit()
