@@ -7,22 +7,31 @@
 </head>
 
 <div class="sidenav">
-  <a href="#Prefix">Field of Study</a>
-  <select required >
-    <option value="EE">EE</option>
-    <option value="ME">ME</option>
-    <option value="BME">BME</option>
-    <option value="CE">CE</option>
-  </select>
-  <a href="#services">Course Number</a>
-  <select required>
-    <option value="313">313</option>
-    <option value="316">316</option>
-    <option value="411">411</option>
-    <option value="422C">422C</option>
-  </select>
   <div>
-    <button class = "button">Search</button>
+    <h1>Search</h1>
+  </div>
+  <div id="search">
+    <div>
+      <a href="#Prefix">Field of Study</a>
+      <select required >
+        <option value="EE">EE</option>
+        <option value="ME">ME</option>
+        <option value="BME">BME</option>
+        <option value="CE">CE</option>
+      </select>
+    </div>
+    <div>
+      <a href="#services">Course Number</a>
+      <select required>
+        <option value="313">313</option>
+        <option value="316">316</option>
+        <option value="411">411</option>
+        <option value="422C">422C</option>
+      </select>
+    </div>
+    <div style = "padding-bottom: 15px; border-bottom: 1px dotted white;">
+      <button class = "button">Search</button>
+    </div>
   </div>
 </div>
 
@@ -46,22 +55,39 @@
 
 <body align="center">
   <div class="main">
-    <div align="center">
-
-      <h2>Courses</h2>
-    </div>
-
     <!-- PAGE CONTENT -->
-    <p>Search here for a specific Course here:</p>
-    <input />
-    <button>Search</button>
+    <table align="center" id="displaytable">
+      <h2 style="font-size:30px;">EE 461L Sections</h1>
+      <tr id="tableheader">
+        <th>Unique Number</th>
+        <th>Last Name</th>
+        <th>First Initial</th>
+        <th>RMP Rating</th>
+        <th>Average Grade</th>
+      </tr>
+      <tr>
+        <td>11001</td>
+        <td>Eberlein</td>
+        <td>M</td>
+        <td>1.0</td>
+        <td>1.0</td>
+      </tr>
+      <tr>
+        <td>11050</td>
+        <td>Cuevas</td>
+        <td>A</td>
+        <td>2.5</td>
+        <td>3.0</td>
+      </tr>
+      <tr>
+        <td>11010</td>
+        <td>Julien</td>
+        <td>C</td>
+        <td>3.2</td>
+        <td>4.0</td>
+      </tr>
+    </table>
 
-    <ul align="left">
-      <li>EE 422C</li>
-      <li>EE 461L</li>
-      <li>E 379R</li>
-      <li>PED 106C</li>
-    </ul>
   </div>
 
   <div class="footer" align="center">
