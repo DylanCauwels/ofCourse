@@ -41,4 +41,4 @@ def updateCIS(LastName, FirstInitial, Prefix, Number, Rating):
 
 # for debugging purposes
 if __name__ == '__main__':
-    # updateCIS('ROSNER', 'J','ARI', '311K','-1')
+    updateCIS('ROSNER', 'J','ARI', '311K','-1')
