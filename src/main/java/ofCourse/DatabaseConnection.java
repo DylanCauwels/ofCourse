@@ -27,9 +27,11 @@ public class DatabaseConnection {
 		return databaseConnection;
 	}
 	
-	public ResultSet getResultSet(String column) {  
+	public ResultSet getColumnResultSet(String column) {  
 		try{
-			
+			if(column.contains("-")){
+				column = "\"" + column + "\"";
+			}
 			String query = "SELECT " + column + " FROM softwarelab.registrar";
 			Statement statement =  conn.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
@@ -48,7 +50,43 @@ public class DatabaseConnection {
 			if(column.contains("-")){
 				column = "\"" + column + "\"";
 			}
-			String query = "SELECT * FROM softwarelab.registrar WHERE " + column + "=" + columnValue;
+			String query = "SELECT * FROM softwarelab.registrar WHERE " + column + " = " + columnValue;
+			Statement statement =  conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			return resultSet;
+			
+		}catch(Exception e){
+			System.out.println(e);
+			return null;
+		
+		}
+	}
+	
+	public ResultSet getDistinctColumnResultSet(String column) {  
+		try{
+			if(column.contains("-")){
+				column = "\"" + column + "\"";
+			}
+			String query = "SELECT DISTINCT " + column + " FROM softwarelab.registrar";
+			Statement statement =  conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			return resultSet;
+			
+		}catch(Exception e){
+			System.out.println(e);
+			return null;
+		}
+		
+	}
+	
+	public ResultSet getDistinctRowResultSet(String column, String columnValue) {
+		try{
+			if(column.contains("-")){
+				column = "\"" + column + "\"";
+			}
+			String query = "SELECT DISTINCT * FROM softwarelab.registrar WHERE " + column + " = " + columnValue;
 			Statement statement =  conn.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
 			

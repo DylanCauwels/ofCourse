@@ -1,6 +1,7 @@
 package ofCourse;
 
 import static org.junit.Assert.*;
+import java.util.ArrayList;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,12 +13,14 @@ public class DatabaseConnectionTest {
 
 	@Test
 	public void testConnection() {
+		Connection conn = null;
 		try {
 			DatabaseConnection dbConn = DatabaseConnection.getInstance();
-			Connection conn = dbConn.getConnection();
+			conn = dbConn.getConnection();
 		}catch(Exception e) {
 			fail(e.toString());
 		}
+		assertNotNull(conn);
 	}
 	
 	@Test
@@ -49,8 +52,29 @@ public class DatabaseConnectionTest {
 		try {
 			DatabaseConnection dbConn = DatabaseConnection.getInstance();
 			String column = "*";
-			ResultSet resultSet = dbConn.getResultSet(column);
+			ResultSet resultSet = dbConn.getColumnResultSet(column);
 			assertNotNull(resultSet);
+		}catch(Exception e) {
+			fail(e.toString());
+		}
+	}
+	
+	@Test
+	public void testGetDistinctColumnResultSetAllColumns() {
+		try {
+			DatabaseConnection dbConn = DatabaseConnection.getInstance();
+			String column = "prefix";
+			ResultSet resultSet = dbConn.getDistinctColumnResultSet(column);
+			assertNotNull(resultSet);
+			ArrayList<String> courseAbb = new ArrayList<String>(0);
+			while(resultSet.next()) {
+				if(courseAbb.contains(resultSet.getString("prefix"))) {
+					fail("REPEAT");
+				}else {
+					courseAbb.add(resultSet.getString("prefix"));
+				}
+			} 
+			
 		}catch(Exception e) {
 			fail(e.toString());
 		}
@@ -61,13 +85,13 @@ public class DatabaseConnectionTest {
 		try {
 			DatabaseConnection dbConn = DatabaseConnection.getInstance();
 			String column = "unique-number";
-			ResultSet resultSet = dbConn.getResultSet(column);
+			ResultSet resultSet = dbConn.getColumnResultSet(column);
 			assertNotNull(resultSet);
 		}catch(Exception e) {
 			fail(e.toString());
 		}
-	}
 	
+	}
 	@Test
 	public void getRowResultSetTest() {
 		try {
@@ -75,8 +99,30 @@ public class DatabaseConnectionTest {
 			String column = "unique-number";
 			String value = "310";
 			ResultSet resultSet = dbConn.getRowResultSet(column, value);
-			assertEquals(resultSet.getString("\"unique-number\""), "310");
-			//assertNotNull(resultSet);
+			resultSet.next();
+			assertEquals(resultSet.getString("unique-number"), "310");
+		}catch(Exception e) {
+			fail(e.toString());
+		}
+	}
+	
+	@Test
+	public void getDistinctRowResultSetTest() {
+		try {
+			DatabaseConnection dbConn = DatabaseConnection.getInstance();
+			String column = "unique-number";
+			String value = "310";
+			ResultSet resultSet = dbConn.getRowResultSet(column, value);
+			
+			ArrayList<String> courseAbb = new ArrayList<String>(0);
+			while(resultSet.next()) {
+				assertEquals(resultSet.getString("unique-number"), "310");
+				if(courseAbb.contains(resultSet.getString("prefix"))) {
+					fail("REPEAT");
+				}else {
+					courseAbb.add(resultSet.getString("prefix"));
+				}
+			} 
 		}catch(Exception e) {
 			fail(e.toString());
 		}
