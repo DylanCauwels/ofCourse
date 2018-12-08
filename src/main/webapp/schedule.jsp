@@ -43,14 +43,17 @@
   	
 		<!-- HEADER MENU -->
   		<div class="grid-container">
+  			<div id="menu0">
+  				<a href="index.jsp""><img name="url_logo_index" height=100% src="images/logo.png" alt="ofCourse" /></a>
+  			</div>
   			<div id="menu1">
-  				<p><a href="professors.jsp">Professors</a></p>
+  				<p name="url_professors"><a href="professors.jsp">Professors</a></p>
   			</div>
   			<div id="menu2">
-  				<p><a href="courses.jsp">Courses</a></p>
+  				<p name="url_courses"><a href="courses.jsp">Courses</a></p>
   			</div>
   			<div id="menu3">
-  				<p><a href="schedule.jsp">Schedule</a></p>
+  				<p name="url_schedule"><a href="schedule.jsp">Schedule</a></p>
   			</div>
   		</div>
   	
