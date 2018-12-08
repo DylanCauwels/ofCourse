@@ -16,6 +16,7 @@ h1 {
 a {
 	text-decoration: none;
 	color: White;
+	display: block;
 }
 
 td {
@@ -36,8 +37,9 @@ td {
 	justify-content: center;
 }
 
-.body_text {
+.main {
 	font-family: Geneva;
+	margin-left: 160px;
 }
 
 img {
@@ -74,7 +76,44 @@ p {
 }
 
 .curr {
-	background-color: #7B7E82;
+	background-color: #686564;
+	/* 7B7E82 */
+}
+
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+		margin-top:83px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+		/*  818181*/
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.grid-container div:hover {
+		background-color: #e86800;
+}
+
+.footer {
+	border-top: solid;
+	border-width: 1px;
+	font-size: 12px;
 }
 
 #menu0 {grid-area: logo}

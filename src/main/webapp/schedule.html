@@ -2,24 +2,31 @@
 
 
   	<head>
-		<title>OfCourse</title>
-  		<link rel="stylesheet" href="style.css">
+  		<title>OfCourse</title>
+    		<link rel="stylesheet" href="style.css">
 
-  		<!-- CALENDAR DEPENDENCIES -->
-  		<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
-		<script src='lib/jquery.min.js'></script>
-		<script src='lib/moment.min.js'></script>
-		<script src='fullcalendar/fullcalendar.js'></script>
-		<script src='fullcalendar/calendarinit.js'></script>
+    		<!-- CALENDAR DEPENDENCIES -->
+    		<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+  		<script src='lib/jquery.min.js'></script>
+  		<script src='lib/moment.min.js'></script>
+  		<script src='fullcalendar/fullcalendar.js'></script>
+  		<script src='fullcalendar/calendarinit.js'></script>
 
   	</head>
 
-
+    <div class="sidenav">
+			<a href="#about">About</a>
+			<a href="#services">Services</a>
+			<a href="#clients">Clients</a>
+		</div>
 
   	<body align="center">
 
 		<!-- HEADER MENU -->
   		<div class="grid-container">
+        <div id="menu0">
+          <a href=index.html><img src="logo_no_background.png" alt="littytitty" style="width:100px;height:25px;">
+        </div>
   			<div id="menu1">
   				<p><a href=professors.html>Professors</a></p>
   			</div>
@@ -30,19 +37,21 @@
   				<p><a href=schedule.html>Schedule</a></p>
   			</div>
   		</div>
+      <div class="main">
+    		<div align="center">
+  			     <h2>Schedule</h2>
+  	  	</div>
 
-  		<div align="center">
-			<h1>
-				<a href="index.jsp" class="main_title">ofCourse</a>
-			</h1>
-			<h2>Schedule</h2>
-	  	</div>
+  	  	<!-- PAGE CONTENT -->
+  	  	<div align="center">
+  	  		<div style="width: 80%; height: 80%"id='calendar'></div>
+  	  	</div>
+      </div>
 
-	  	<!-- PAGE CONTENT -->
-	  	<div align="center">
-	  		<div style="width: 80%; height: 80%"id='calendar'></div>
-	  	</div>
-
+      <div class="footer">
+				<p>© 2018-2019 ofCourse.university, Inc., or its affiliates</p>
+			</div>
+      
   	</body>
 
 </html>
