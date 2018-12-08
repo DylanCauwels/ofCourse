@@ -3,41 +3,33 @@ html, body {
 	padding: 0;
 }
 
-body {
-	background-color: #ffffff;
-}
-
 h1 {
 	font-family: Times;
-	//font-size: 105%;
 	text-align: center;
 }
 
 a {
 	text-decoration: none;
 	color: White;
+	display: block;
 }
 
 td {
 	border: 1px solid black;
 }
 
-.main_title {
-	color: Black;
-	font-family: Geneva, sans-serif;
+header {
+	border-bottom: solid;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	height: auto;
+	z-index: 100;
 }
 
-#title_tab {
-	background-color: #ecf4ec;
-	padding-top: 2pt;
-	padding-bottom: 3pt;
-	text-align="center";
-	display: flex;
-	justify-content: center;
-}
-
-.body_text {
-	font-family: Geneva;
+body {
+	background-color: #ffffff;
+	padding-top: 125px;
 }
 
 img {
@@ -49,10 +41,42 @@ p {
 	font-family: Geneva, sans-serif!important;
 }
 
+select {
+	font-size: 20px;
+	background-color: white;
+}
+
+h1 {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	color: white;
+	padding-bottom: 25px;
+	border-bottom: 2px solid white;
+}
+
+table, th{
+	border: 1px solid black;
+}
+
+th {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.main_title {
+	color: Black;
+	font-family: Geneva, sans-serif;
+}
+
+.main {
+	font-family: Geneva;
+	margin-left: 200px;
+}
+
 .button {
 	font-family: Geneva, sans-serif!important;
-	font-size: 22px;
-	text-decoration: bold;
+	font-size: 20px;
+	margin-top: 25px;
 }
 
 .post_title {
@@ -71,13 +95,65 @@ p {
 	padding-right: 125px;
 	background-color: #BF5700;
 	text-color: White;
+	/* font-size: 20px; */
 }
 
-#menu0 {
-	grid-area: logo;
-	padding-right: 50px;
-	padding-bottom: 20px;
-	}
+.curr {
+	border: 5px solid #686564;
+	font-style: bold;
+	background-color: #e86800;
+}
+
+.curr a {
+	font-weight: bold;
+}
+
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position:fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+		margin-top:83px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #f1f1f1;
+		/*  818181*/
+    display: block;
+}
+
+.button:hover, #search select:hover{
+	background-color: #cecece;
+}
+
+.grid-container div:hover {
+		background-color: #e86800;
+}
+
+.footer {
+	border-top: solid;
+	border-width: 1px;
+	font-size: 12px;
+	margin-top: 200px;
+}
+
+.footerBlock {
+		display: inline-block;
+}
+
+.title {
+	font-size: 20px;
+}
+
+#menu0 {grid-area: logo}
 #menu1 {grid-area: professors;}
 #menu2 {grid-area: courses;}
 #menu3 {grid-area: classes;}
@@ -87,5 +163,54 @@ p {
 	color: blue;
 }
 
+#title_tab {
+	background-color: #ecf4ec;
+	padding-top: 2pt;
+	padding-bottom: 3pt;
+	text-align="center";
+	display: flex;
+	justify-content: center;
+}
 
+#tableheader {
+	font-size: 25px;
+}
 
+#displaytable {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+	border-bottom: 2px solid #BF5700;
+	margin-top: 25px;
+
+}
+
+#displaytable td, #displaytable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#displaytable tr:nth-child(even){background-color: #f2f2f2;}
+
+#displaytable tr:hover {background-color: #ddd;}
+
+#displaytable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #686564;
+  color: white;
+	border-bottom: 2px solid #BF5700;
+	/* border-top: 2px solid #BF5700; */
+
+}
+
+#search {
+	border-bottom: 2px solid white;
+	padding-bottom: 20px;
+}
+
+#search div {
+	border-top: 1px dotted white;
+	margin-top: 15px;
+}

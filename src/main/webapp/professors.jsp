@@ -47,28 +47,28 @@
   				<p name="url_schedule"><a href="schedule.jsp">Schedule</a></p>
   			</div>
   		</div>
-  	
+
   		<div align="center">
 			<h1>
 				<a href="index.jsp" class="main_title">ofCourse</a>
 			</h1>
 			<h2>Professors</h2>
 	  	</div>
-	  
+
 	  	<!-- PAGE CONTENT -->
-	  	<p>Search here for a specific Professor here:</p>	
+	  	<p>Search here for a specific Professor here:</p>
 	  	<input/>
 	  	<button>Search</button>
-	  	
+
 	  	<ul align="left">
 	  		<li>Angela A. Aaronson</li>
 	  		<li>Brian B. Barksdale</li>
 	  		<li>Ciara C. Cortez</li>
 	  	</ul>
-	  	
 
 
-		
+
+
   	</body>
 
 </html>
