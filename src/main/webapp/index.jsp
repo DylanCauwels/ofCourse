@@ -18,76 +18,58 @@
 
 <html>
 
-	<head>
-  		<title>OfCourse</title>
-  	  	<link rel="stylesheet" href="style.css">
-  	</head>
+<head>
+	<title>ofCourse</title>
+	<link rel="stylesheet" href="style.css">
+</head>
 
+<div class="sidenav">
+	<a href="#about">About</a>
+	<a href="#services">Services</a>
+	<a href="#clients">Clients</a>
+</div>
 
-  	<body align="center">
-  		<!-- HEADER MENU -->
-  		<div class="grid-container">
-  			<div id="menu0">
-  				<a href="index.jsp""><img name="url_logo_index" height=100% src="images/logo.png" alt="ofCourse" /></a>
-  			</div>
-  			<div id="menu1">
-  				<p name="url_professors"><a href="professors.jsp">Professors</a></p>
-  			</div>
-  			<div id="menu2">
-  				<p name="url_courses"><a href="courses.jsp">Courses</a></p>
-  			</div>
-  			<div id="menu3">
-  				<p name="url_schedule"><a href="schedule.jsp">Schedule</a></p>
-  			</div>
-  		</div>
-  	
-  		<div align="center">
-  			<h1 class="main_title">WELCOME TO</h1>
-			<h1>
-				<a href="index.jsp" class="main_title">ofCourse</a>
-			</h1>
-	  	</div>
-	  
-	  	<!-- PAGE CONTENT -->	
-	  	<div class="body_text">
-	  		<p>ofCourse is a course scheduling and class information platform for students at the University of Texas at Austin. ofCourse allows you to choose the classes, professors, and schedule that best suits your needs.</p>
-	  	</div>
-	  	
-	  	<%
-	  		UserService userService = UserServiceFactory.getUserService();
+<header>
+	<!-- HEADER MENU -->
+	<div class="grid-container">
+		<div id="menu0">
+			<a href=index.html><img src="logo_no_background.png" alt="littytitty" style="width:100px;height:25px;">
+		</div>
+		<div id="menu1" class="titles">
+			<p><a href=professors.html>Professors</a></p>
+		</div>
+		<div id="menu2" class="titles">
+			<p><a href=courses.html>Courses</a></p>
+		</div>
+		<div id="menu3" class="titles">
+			<p><a href=schedule.html>Schedule</a></p>
+		</div>
+	</div>
+</header>
 
-	    	User user = userService.getCurrentUser();
-		
-		    if (user != null) {
-		
-		      pageContext.setAttribute("user", user);
-		
-		%>
-		
-						<p>User: ${fn:escapeXml(user.nickname)}</p>
-		
-						<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Sign out</a>
-		
-		<%
-		
-		    } else {
-		
-		%>
-						<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
-		
-		<%
-		
-		    }
-		
-		%>
-	  	
-	  	
-	  	
+<div align="center">
+	<h1 class="main_title">WELCOME TO</h1>
+	<h1>
+		<a href="index.jsp" class="main_title">ofCourse</a>
+	</h1>
+</div>
 
+<body align="center">
 
+	<!-- PAGE CONTENT -->
+	<div class="main">
+		<p>ofCourse is a course scheduling and class information platform for students at the University of Texas at Austin. ofCourse allows you to choose the classes, professors, and schedule that best suits your needs.</p>
+	</div>
 
+	<div class="footer" align="center">
+		<div class = "footerBlock">
+			<a href=index.html><img src="images/logo_outlined.png" alt="littytitty" style="width:100px;height:25px;"></a>
+		</div>
+		<div class = "footerBlock">
+			<p>© 2018-2019 ofCourse.university, Inc., or its affiliates</p>
+		</div>
+	</div>
 
-
-	</body>
+</body>
 
 </html>
