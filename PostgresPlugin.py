@@ -33,8 +33,12 @@ def updateCIS(LastName, FirstInitial, Prefix, Number, Rating):
     DB = DBConn.cursor()
     DB.execute("""UPDATE softwarelab.registrar
                     SET "cis-grade-distribution" = '%s'
-                    WHERE "professor-last-name" = '%s'
+                    WHERE ("professor-last-name" = '%s'
                     AND "professor-first-initial" = '%s'
                     AND prefix = '%s'
-                    AND "number" = '%s' """ % (Rating, LastName, FirstInitial, Prefix, Number))
+                    AND number = '%s')""" % (Rating, LastName, FirstInitial, Prefix, Number))
     DBConn.commit()
+
+# for debugging purposes
+if __name__ == '__main__':
+    # updateCIS('ROSNER', 'J','ARI', '311K','-1')
