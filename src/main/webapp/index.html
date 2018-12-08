@@ -3,6 +3,8 @@
 <head>
 	<title>ofCourse</title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="slideshow.css">
+
 </head>
 
 <div class="sidenav">
@@ -14,11 +16,12 @@
 <header>
 	<!-- HEADER MENU -->
 	<div class="grid-container">
+
 		<div id="menu0">
-			<a href=index.html><img src="logo_no_background.png" alt="littytitty" style="width:100px;height:25px;">
+			<a href=index.html><img src="images/logo_no_background.png" alt="littytitty" style="width:100px;height:25px;"></a>
 		</div>
 		<div id="menu1" class="titles">
-			<p><a href=professors.html>Professors</a></p>
+			<a href=professors.html><p>Professors</p></a>
 		</div>
 		<div id="menu2" class="titles">
 			<p><a href=courses.html>Courses</a></p>
@@ -29,14 +32,57 @@
 	</div>
 </header>
 
-<div align="center">
-	<h1 class="main_title">WELCOME TO</h1>
-	<h1>
-		<a href="index.jsp" class="main_title">ofCourse</a>
-	</h1>
-</div>
-
 <body align="center">
+<div class="container">
+	<!-- Slideshow container -->
+<div class="slideshow-container">
+
+  <!-- Full-width images with number and caption text -->
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <img class="slideshow" src="images/slideshow_1.jpg" style="width:100%">
+    <div class="text">The University of Texas at Austin</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <img class="slideshow" src="images/slideshow_2.jpg" style="width:100%">
+    <div class="text">Caption Two</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <img class="slideshow" src="images/slideshow_3.jpg" style="width:100%">
+    <div class="text">Caption Three</div>
+  </div>
+</div>
+<div class="centered">
+	<div align="center">
+		<h1 class="main_title">WELCOME TO</h1>
+		<h1>
+			<a href="index.jsp" class="main_title">ofCourse</a>
+		</h1>
+	</div>
+</div>
+</div>
+<br>
+
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
 
 	<!-- PAGE CONTENT -->
 	<div class="main">

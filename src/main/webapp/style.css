@@ -34,8 +34,8 @@ body {
 }
 
 img {
-	padding-top: 13pt;
-	padding-right: 20pt;
+	margin-top: 13pt;
+	margin-right: 20pt;
 }
 
 p {
@@ -48,8 +48,9 @@ select {
 }
 
 .main_title {
-	color: Black;
+	color: White;
 	font-family: Geneva, sans-serif;
+	text-shadow: 2px 2px #000000;
 }
 
 .main {
@@ -80,13 +81,21 @@ select {
 	padding: 10px;
 	padding-left: 125px;
 	padding-right: 125px;
-	background-color: #BF5700;
+	/*background-color: #BF5700;*/
+	background-image: url(images/header_panorama.jpg);
+	background-position: center;
 	text-color: White;
 }
 
 .curr {
-	background-color: #686564;
+	border: 5px solid #686564;
+	background-color: #bf5700;
+	font-style: bold;
 	/* 7B7E82 */
+}
+
+.curr a {
+	font-weight: bold;
 }
 
 .sidenav {
@@ -147,4 +156,20 @@ select {
 	text-align="center";
 	display: flex;
 	justify-content: center;
+}
+
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-left: 110px;
 }
