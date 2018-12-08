@@ -1,6 +1,7 @@
 package Algorithm;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Algorithm {
     private static ArrayList<course> courses;
@@ -13,27 +14,39 @@ public class Algorithm {
         schedule = Schedule;
     }
 
+
+
     public ArrayList<Section> run(){
         /** build compatible schedule */
-        for(course c: courses){
-            for(Section s: c.getSections()){
-                if(!conflicts(s)){
-                     schedule.add(s);
-                     break;
+        /*for(course c: courses){
+            for(Section s: c.getSections()){    // For all sections of course
+                if (s.isOpen()) {               // if course is open
+                    if (!conflicts(s)) {        // check if conflicts
+                        schedule.add(s);        // add if no conflicts
+                        break;                  // break to check next course
+                    }
                 }
             }
+        }
+        return schedule; */
+
+        while(courses != null){
+            
         }
         return schedule;
     }
 
     private boolean conflicts(Section s){
-        for (Section e : schedule) {                            // for each section
-            if(isConflict(e, s)){ return true; }
+        for (Section e : schedule) {            // for each section
+                if (isConflict(e, s)) {         // If doesn't conflict with course in question
+                    return true;                // confirm conflict
+                }
         }
-        return false;
+        return false;                           // compatible with schedule
     }
 
     private boolean isConflict(Section s1, Section s2){
+        /** Put Day Strings in easily comparable format */
         String days1 = s1.getClassDays();
         if(days1.length() == 0){
             days1 = "......";
@@ -96,8 +109,11 @@ public class Algorithm {
             days2 = days2.substring(0,5) + "." + days2.substring(5);
         }
 
+        /** -- checking if conflict -- */
         for(int i = 0; i < 6; i++){
+        /** if occurse on same day */
             if((days1.charAt(i) == days2.charAt(i))&&(days1.charAt(i) != '.')){
+        /** -- Check for overlapping times -- */
                 if((Integer.parseInt(s1.getStartTime()) >= Integer.parseInt(s2.getStartTime())) &&
                         (Integer.parseInt(s1.getStartTime()) < Integer.parseInt(s2.getEndTime()))){ return true; }
                 if((Integer.parseInt(s1.getEndTime()) > Integer.parseInt(s2.getStartTime())) &&

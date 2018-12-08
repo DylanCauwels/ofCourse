@@ -46,19 +46,34 @@ public class AlgorithmUnitTests extends TestCase {
 
         ArrayList<Section> schedule = new ArrayList<Section>();
 
-
-
-
-
-
-
-
-        //-----------------------------------------------------------------------------
+        //-------------------------------Test#1---------------------------------
         Algorithm a1 = new Algorithm(schedule, courses);
         schedule = a1.run();
         assertTrue(schedule.contains(courses.get(0).getSections().get(0)) &&
                 schedule.contains(courses.get(1).getSections().get(0))
                 && schedule.contains(courses.get(2).getSections().get(0))
                 && schedule.contains(courses.get(3).getSections().get(0)));
+
+        //-------------------------------Test#2---------------------------------
+        s4.setStartTime("900");
+        s4.setEndTime("1030");
+        schedule = new ArrayList<Section>();
+        a1 = new Algorithm(schedule, courses);
+        schedule = a1.run();
+        assertTrue(schedule.contains(courses.get(0).getSections().get(0)) &&
+                schedule.contains(courses.get(1).getSections().get(0))
+                && schedule.contains(courses.get(2).getSections().get(0)));
+
     }
+
+    public void test2(){
+        String classDays;
+        String Start;
+        String End;
+        classDays = "MW";
+        Start = "900";   // mw start 9am
+        End = "1030";    // mw end 10:30am
+        Section s1 = new Section(13524, classDays, Start, End, false, true);
+    }
+
 }
