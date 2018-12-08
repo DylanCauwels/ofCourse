@@ -6,27 +6,30 @@ $(function() {
 	  events: [
 		    {
 		      title  : 'event1',
-		      start  : '2018-11-27T12:30:00',
-		      end	 : '2018-11-27T14:00:00'
+		      start  : '2018-12-04T12:30:00',
+		      end	 : '2018-12-04T14:00:00',
+		      editable: true,
+		      startRecur: start,
 		    },
-		    
 		  ],
 	  
 	  
     // put your options and callbacks here
+		  	eventColor: '#378006',
 	  		weekends: false,
 	  		defaultView: 'agendaWeek',
 	  		minTime: "08:00:00",
 	  		maxTime: "22:00:00",
 	  		height: "auto",
 	  		columnHeader: true,
-	  		columnHeaderFormat: 'dddd',
+	  		columnHeaderFormat: 'ddd',
 	  		nowIndicator: false,
 	  		header: {
-	  			left: '',
+	  			left: 'prev',
 	  			center: '',
-	  			right: '',
+	  			right: 'next',
 	  		},
+	  		editable: false,
   })
 
 });
