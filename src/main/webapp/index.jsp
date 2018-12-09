@@ -27,16 +27,16 @@
 	<!-- HEADER MENU -->
 	<div class="grid-container">
 		<div id="menu0">
-			<a href=index.html><img src="logo_no_background.png" alt="littytitty" style="width:100px;height:25px;">
+			<a href=index.jsp><img src="logo_no_background.png" alt="littytitty" style="width:100px;height:25px;">
 		</div>
 		<div id="menu1" class="titles">
-			<p><a href=professors.html>Professors</a></p>
+			<p><a href=professors.jsp>Professors</a></p>
 		</div>
 		<div id="menu2" class="titles">
-			<p><a href=courses.html>Courses</a></p>
+			<p><a href=courses.jsp>Courses</a></p>
 		</div>
 		<div id="menu3" class="titles">
-			<p><a href=schedule.html>Schedule</a></p>
+			<p><a href=schedule.jsp>Schedule</a></p>
 		</div>
 	</div>
 </header>

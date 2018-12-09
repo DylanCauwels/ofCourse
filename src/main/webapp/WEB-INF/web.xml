@@ -1,22 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-         version="3.1">
-  	      
-  <servlet>
-  	<servlet-name>courseServlet</servlet-name>
-  	<servlet-class>ofCourse.CourseServlet</servlet-class>
-  </servlet>       
-  <servlet-mapping>
-  	<servlet-name>courseServlet</servlet-name>
-  	<url-pattern>/courses</url-pattern>
-  </servlet-mapping>
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
-  <error-page>
-    <location>/courses.jsp</location>
-  </error-page>
-</web-app>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+
+    <!-- General description of your web application -->
+
+    <display-name>ofCourse</display-name>
+    <description>
+      This is an intuitive web application to help students at UT find and schedule 
+      their upcoming semester schedule 
+    </description>
+
+
+    <servlet>
+      <servlet-name>courses</servlet-name>
+      <servlet-class>ofCourse.CourseServlet</servlet-class>
+      <load-on-startup>5</load-on-startup>
+    </servlet>
+
+
+    <servlet-mapping>
+      <servlet-name>courses</servlet-name>
+      <url-pattern>/courses</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+      <session-timeout>30</session-timeout>    <!-- 30 minutes -->
+    </session-config>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>
