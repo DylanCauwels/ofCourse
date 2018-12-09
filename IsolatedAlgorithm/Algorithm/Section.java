@@ -12,14 +12,14 @@ public class Section implements Comparable{
     private boolean open;
     private double rating;
 
-    public Section(int uniqueId, String classDays, String startTime, String endTime, boolean waitlisted, boolean open){
+    public Section(int uniqueId, String classDays, String startTime, String endTime, boolean waitlisted, boolean open, double Rating){
         this.uniqueId = uniqueId;
         this.waitlisted = waitlisted;
         this.open = open;
         this.classDays = classDays;
         this.startTime = startTime;
         this.endTime = endTime;
-        rating = getRating();
+        this.rating = Rating;
     }
 
     public void setRating(double d){
@@ -62,6 +62,6 @@ public class Section implements Comparable{
 
     @Override
     public String toString(){
-        return ("Section: " + this.uniqueId + "has rating - " + rating);
+        return (uniqueId + " on days: " + classDays + " Start: " + startTime + "End: " + endTime);
     }
 }
