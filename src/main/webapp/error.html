@@ -1,0 +1,74 @@
+<html>
+
+
+<head>
+  <title>Courses</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<div class="sidenav">
+
+</div>
+
+<header>
+  <!-- HEADER MENU -->
+  <div class="grid-container">
+    <div id="menu0">
+      <a href=index.html><img src="images/logo_no_background.png" alt="littytitty" style="width:100px;height:25px;">
+    </div>
+    <div id="menu1">
+      <p><a href=professors.html>Professors</a></p>
+    </div>
+    <div id="menu2">
+      <p><a href=courses.html>Courses</a></p>
+    </div>
+    <div id="menu3">
+      <p><a href=schedule.html>Schedule</a></p>
+    </div>
+  </div>
+</header>
+
+<body align="center">
+  <div class="main">
+    <!-- PAGE CONTENT -->
+  <h1 style="color: Black">Welcome to the Error Page!</h1>
+  <h2>Something went wrong, and we're not sure why.</h2>
+
+  <h3>The development team must be punished for their shortcomings.</h3>
+  <h3>Please select one for us to fire.</h3>
+
+  <table class="errorPageTeam" align=center>
+    <tr>
+      <td><button onclick="buttonPress()" type="button" name="">Michael</button></td>
+      <td><button onclick="buttonPress()" type="button" name="">Jack</button></td>
+      <td><button onclick="buttonPress()" type="button" name="">Jonothan</button></td>
+      <td><button onclick="buttonPress()" type="button" name="">Dylan</button></td>
+      <td><button onclick="buttonPress()" type="button" name="">Jake</button></td>
+    </tr>
+  </table>
+
+  <h3 id="errorSendoff">Trust us, they deserve it.</h3>
+
+  </div>
+
+  <script>
+    var buttonPress = function() {
+      document.getElementById("errorSendoff").innerHTML = "Thanks! You'll be redirected shortly...";
+      var timer = setTimeout(function() {
+          window.location='index.html'
+      }, 3000);
+    }
+  </script>
+
+  <div class="footer" align="center">
+		<div class = "footerBlock">
+			<a href=index.html><img src="images/logo_outlined.png" alt="littytitty" style="width:100px;height:25px;"></a>
+		</div>
+		<div class = "footerBlock">
+			<p>© 2018-2019 ofCourse.university, Inc., or its affiliates</p>
+		</div>
+	</div>
+
+</body>
+
+</html>

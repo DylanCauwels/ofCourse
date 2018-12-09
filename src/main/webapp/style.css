@@ -101,20 +101,15 @@ th {
 	/* font-size: 20px; */
 }
 
-.curr {
-	border: 5px solid #686564;
-<<<<<<< HEAD
-	background-color: #bf5700;
-	font-style: bold;
-	/* 7B7E82 */
-=======
-	font-style: bold;
-	background-color: #e86800;
+#index-grid-container {
+	background-image: url(images/header_panorama.png);
 }
 
-.curr a {
-	font-weight: bold;
->>>>>>> ff0058c2c00f4c7f8d548d58662950ba2c07a914
+.curr {
+	border: 5px solid #aaaaaa;
+	background-color: #bf5700;
+	font-style: bold;
+	display: inherit;
 }
 
 .curr a {
@@ -166,6 +161,8 @@ th {
 	font-size: 20px;
 }
 
+
+
 #menu0 {grid-area: logo}
 #menu1 {grid-area: professors;}
 #menu2 {grid-area: courses;}
@@ -185,7 +182,6 @@ th {
 	justify-content: center;
 }
 
-<<<<<<< HEAD
 /* Container holding the image and the text */
 .container {
   position: relative;
@@ -200,7 +196,8 @@ th {
   left: 50%;
   transform: translate(-50%, -50%);
   margin-left: 110px;
-=======
+}
+
 #tableheader {
 	font-size: 25px;
 }
@@ -242,5 +239,20 @@ th {
 #search div {
 	border-top: 1px dotted white;
 	margin-top: 15px;
->>>>>>> ff0058c2c00f4c7f8d548d58662950ba2c07a914
+}
+
+.errorPageTeam {
+	border: 0;
+}
+
+.errorPageTeam td {
+	border: 0;
+}
+
+#titleShadow {
+	text-shadow: 2px 2px #f2f2f2;
+}
+
+.titleList {
+	display: inherit;
 }
