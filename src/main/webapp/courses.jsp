@@ -2,24 +2,23 @@
 
 <%@ page import="java.util.*" %>
 
-<%@ page import="com.google.appengine.api.users.User" %>
-
-<%@ page import="com.google.appengine.api.users.UserService" %>
-
-<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
-
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%@ page import="com.googlecode.objectify.*" %>
 
 
 <html>
-
-
+	     
 <head>
   <title>Courses</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
+<body onload="document.frm1.submit()">
+   <form action="/courses" method="post">
+      <input type="hidden" name="purpose" value="PrefixLoad" />
+   </form>
+</body>
 
 <div class="sidenav">
   <div>
@@ -27,8 +26,8 @@
   </div>
   <div id="search">
     <div>
-      <a href="#Prefix">Field of Study</a>
-      <select required >
+      <a>Field of Study</a>
+      <select required name="Prefix" form=getCourses>
         <option value="EE">EE</option>
         <option value="ME">ME</option>
         <option value="BME">BME</option>
@@ -36,8 +35,8 @@
       </select>
     </div>
     <div>
-      <a href="#services">Course Number</a>
-      <select required>
+      <a>Course Number</a>
+      <select required name="Number" form=getCourses>
         <option value="313">313</option>
         <option value="316">316</option>
         <option value="411">411</option>
@@ -45,7 +44,12 @@
       </select>
     </div>
     <div style = "padding-bottom: 15px; border-bottom: 1px dotted white;">
-      <button class = "button">Search</button>
+  		<form action="/courses" method="post" id="getCourses">
+		  	<div>
+		  		<input type="submit" value="Search" class="button"/>
+	  		</div>
+		    <input type="hidden" name="purpose" value="CourseLoad" />
+		</form>
     </div>
   </div>
 </div>
@@ -104,7 +108,12 @@
     </table>
 
   </div>
-
+  
+  <%
+  		String ass = (String)pageContext.getAttribute("test");
+  %>
+  
+  
   <div class="footer" align="center">
 		<div class = "footerBlock">
 			<a href=index.html><img src="images/logo_outlined.png" alt="littytitty" style="width:100px;height:25px;"></a>
