@@ -50,6 +50,8 @@
 	  		<p>ofCourse is a course scheduling and class information platform for students at the University of Texas at Austin. ofCourse allows you to choose the classes, professors, and schedule that best suits your needs.</p>
 	  	</div>
 	  	
+	  	<a href="/testServlet" style="color:black;">The Servlet</a>
+	  	
 	  	<%
 	  		UserService userService = UserServiceFactory.getUserService();
 

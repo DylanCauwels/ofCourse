@@ -33,6 +33,27 @@
 </header>
 
 <body align="center">
+
+	<!-- TESTING -->
+	<div>
+    <button onclick="addEvent()" type="button" name="">Add Event</button>
+  </div>
+
+  <script>
+  var addEvent = function() {
+		window.location='schedule.html';
+    var testEvent = {
+      title  : 'Render Event',
+      start  : '2018-01-02T12:30:00',
+      end	 : '2018-01-02T14:00:00'
+    }
+
+    $('#calendar').fullCalendar('renderEvent', testEvent, true);
+  }
+  </script>
+
+
+
 <div class="container">
 	<!-- Slideshow container -->
 <div class="slideshow-container">
