@@ -2,10 +2,13 @@ package Algorithm;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import Algorithm.Section;
+
 
 public class Algorithm {
     private static ArrayList<course> courses;
     private static ArrayList<Section> schedule;
+    ArrayList<Schedule> scheduleList;
 
     /** "Courses" param should only contain courses not in "Schedule" param  */
     /** Schedule passed should already contain user specified section(s) */
@@ -16,27 +19,47 @@ public class Algorithm {
 
 
 
-    public ArrayList<Section> run(){
-        /** build compatible schedule */
-        /*for(course c: courses){
-            for(Section s: c.getSections()){    // For all sections of course
-                if (s.isOpen()) {               // if course is open
-                    if (!conflicts(s)) {        // check if conflicts
-                        schedule.add(s);        // add if no conflicts
-                        break;                  // break to check next course
-                    }
-                }
-            }
-        }
-        return schedule; */
-
-        while(courses != null){
-            
-        }
-        return schedule;
+    public Schedule run(){
+    	scheduleList = new ArrayList<ArrayList<Section>>(0);
+    	opt(schedule , 0, 0);
+    	
+    	Schedule optimal = null;
+    	for(int i ; i < scheduleList.size() ; i++) {
+    		if(optimal == null) {
+    			optimal = scheduleList.get(0);
+    		}else {
+    			int scoreOptimal = optimal.getScore();
+    			int scoreSchedule = scheduleList.get(i).getScore();
+    			if(scoreSchedule > scoreOptima) {
+    				optimal = scheduleList.get(i);
+    			}
+    		}
+    	}
+    	return optimal;
+    }
+    
+    private void opt(ArrayList<Section> schedule, int courseIndex, double score){
+    	if(courseIndex >= courses.size()) {
+    		Schedule newSchedule = new Schedule(schedule, score);
+    		scheduleList.add(newSchedule);
+    		return;
+    	}
+    	course c = courses.get(courseIndex);
+    	ArrayList<Section> courseSections = c.getSections();
+    	
+    	for(Section s : courseSections) {
+    		ArrayList<Section> sched = schedule.clone();
+    		if(conflicts(s, sched)) {
+    			continue;
+    		}
+    		//sched.add(s);
+    		sched.add(s);
+    		score = score + s.getRating();
+    		opt(sched, courseIndex + 1, score);
+    	}
     }
 
-    private boolean conflicts(Section s){
+    private boolean conflicts(Section s, Schedule schedule){
         for (Section e : schedule) {            // for each section
                 if (isConflict(e, s)) {         // If doesn't conflict with course in question
                     return true;                // confirm conflict

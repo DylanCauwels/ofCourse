@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class Section implements Comparable{
     private int uniqueId;
+    //private double score;
     private String classDays;
     private String startTime;
     private String endTime;
@@ -25,7 +26,7 @@ public class Section implements Comparable{
     public void setRating(double d){
         rating = d;
     }
-
+    
     public double getRating(){
         return rating;
     }
