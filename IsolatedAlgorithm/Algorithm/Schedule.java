@@ -6,9 +6,9 @@ public class Schedule {
 	ArrayList<Section> courses;
 	double score; 
 	
-	public Schedule() {
-		courses = new ArrayList<Section>(0);
-		score = 0;
+	public Schedule(ArrayList<Section> courses, double score) {
+		this.courses = courses;
+		this.score = score;
 	}
 	
 	public void addScore(double value) {

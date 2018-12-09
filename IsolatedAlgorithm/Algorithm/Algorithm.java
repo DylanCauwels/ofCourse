@@ -2,7 +2,6 @@ package Algorithm;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import Algorithm.Section;
 
 
 public class Algorithm {
@@ -20,7 +19,7 @@ public class Algorithm {
 
 
     public Schedule run(){
-    	scheduleList = new ArrayList<ArrayList<Section>>(0);
+    	scheduleList = new ArrayList<Schedule>(0);
     	opt(schedule , 0, 0);
     	
     	Schedule optimal = null;
