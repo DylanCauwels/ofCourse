@@ -5,7 +5,6 @@ import java.util.Random;
 
 public class Section implements Comparable{
     private int uniqueId;
-    //private double score;
     private String classDays;
     private String startTime;
     private String endTime;
@@ -13,20 +12,20 @@ public class Section implements Comparable{
     private boolean open;
     private double rating;
 
-    public Section(int uniqueId, String classDays, String startTime, String endTime, boolean waitlisted, boolean open, double Rating){
+    public Section(int uniqueId, String classDays, String startTime, String endTime, boolean waitlisted, boolean open){
         this.uniqueId = uniqueId;
         this.waitlisted = waitlisted;
         this.open = open;
         this.classDays = classDays;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.rating = Rating;
+        rating = getRating();
     }
 
     public void setRating(double d){
         rating = d;
     }
-    
+
     public double getRating(){
         return rating;
     }
@@ -63,6 +62,6 @@ public class Section implements Comparable{
 
     @Override
     public String toString(){
-        return (uniqueId + " on days: " + classDays + " Start: " + startTime + "End: " + endTime);
+        return ("Section: " + this.uniqueId + "has rating - " + rating);
     }
 }

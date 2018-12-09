@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Context>
+
+	<Resource name="jdbc/softwarelabinstance"
+	
+	auth="Container"
+	
+	type="javax.sql.DataSource"
+	
+	username="administrator"
+	
+	password="password"
+	
+	driverClassName="org.postgresql.Driver "
+	
+	url="jdbc:postgresql://softwarelabinstance.ct09nasdzura.us-east-1.rds.amazonaws.com:5432/softwarelabinstance"
+	
+	maxActive="15"
+	
+	maxIdle="3"/>
+
+</Context>
