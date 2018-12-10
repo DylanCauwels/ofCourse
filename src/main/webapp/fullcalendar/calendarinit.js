@@ -14,18 +14,6 @@ $(function() {
     }
   },*/
 
-    events: '/myfeed.txt',
-
-	  events: [
-		    {
-		      title : 'Test Event',
-		      start : '2018-01-01T12:30:00',
-		      end	: '2018-01-01T14:00:00'
-		    }
-
-
-		  ],
-
 
     // put your options and callbacks here
 	  		weekends: false,
@@ -49,23 +37,39 @@ $(function() {
 '{ "title":"Test" , "start":"2018-01-02T12:30:00", "end":"2018-01-02T14:00:00" },' +
 '{ "title":"John" , "start":"2018-01-03T12:30:00", "end":"2018-01-03T14:00:00" }]}';*/
 
-var filePath = 'schedule_events/1.txt';
+var filePath = 'schedule_events/contents.txt';
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.open("GET",filePath,false);
 xmlhttp.send(null);
 var fileContent = xmlhttp.responseText;
 
-    var obj = JSON.parse(fileContent);
+	var courses = fileContent.split('\n');
+  var j = 0;
+  while(j < courses.length) {
+	//for(var i = 0; i <= courses.length; i++) {
 
-    for(var i = 0; i < obj.events.length; i++) {
-      var testEvent = {
-        title  : obj.events[i].title,
-        start  : obj.events[i].start,
-        end	 : obj.events[i].end
-      }
+		var filePath = 'schedule_events/' + courses[j] + '.txt';
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open("GET",filePath,false);
+		xmlhttp.send(null);
+		var courseFileContent = xmlhttp.responseText;
 
-      $('#calendar').fullCalendar('renderEvent', testEvent, true);
-    }
+		var obj = JSON.parse(courseFileContent);
+
+	    for(var i = 0; i < obj.events.length; i++) {
+	      var testEvent = {
+	        title  : obj.events[i].title,
+	        start  : obj.events[i].start,
+	        end	 : obj.events[i].end
+	      }
+
+	      $('#calendar').fullCalendar('renderEvent', testEvent, true);
+	    }
+      j++;
+	}
+
+
+
 
     //document.getElementById("testOutput").innerHTML = obj.events[1].title + " " + obj.events[1].title;
 
