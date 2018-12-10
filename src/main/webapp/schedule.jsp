@@ -121,6 +121,7 @@ var fileContent = xmlhttp.responseText;
   <div class="main">
     <div align="center">
       <h2 style="font-size:30px;">Schedule</h2>
+      <button onclick="clearSchedule()" class="button" type="button" name="">Clear Schedule</button>
     </div>
     <div align="center">
       <div style="width: 80%; height: 100%" id='calendar'></div>
@@ -135,6 +136,22 @@ var fileContent = xmlhttp.responseText;
       <p>© 2018-2019 ofCourse.university, Inc., or its affiliates</p>
     </div>
   </div>
+  
+  <script>
+  var clearSchedule = function() {
+	  
+	  $('#calendar').fullCalendar('removeEvents');
+	  
+	  <%
+	  	//Call Jonathan's clear contents.txt method
+	  
+	  
+	  
+	  %>
+	  
+  }
+  
+  </script>
 
 </body>
 
