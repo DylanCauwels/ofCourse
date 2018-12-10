@@ -28,8 +28,8 @@ public class courseServlet extends HttpServlet {
 		sections.add("10105");
 		sections.add("Eberlein");
 		sections.add("M");
-		sections.add("-4.0");
-		sections.add("0.1");
+		sections.add("4.0");
+		sections.add("3.5");
 		sections.add("10110");
 		sections.add("Cuevas");
 		sections.add("A");
