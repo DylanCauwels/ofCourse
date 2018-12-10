@@ -89,12 +89,13 @@ th {
 .grid-container {
 	display: grid;
 	grid-template-areas:
-		'logo professors courses classes';
+		'logo professors courses classes login';
 	grid-gap: 10px;
 	padding-top: 10px;
+	padding-bottom: 10px;
 	padding-left: 0px;
-	padding-right: 125px;
-	/*background-color: #BF5700;*/
+/* 	padding-right: 125px;
+ */	/*background-color: #BF5700;*/
 	background-image: url(images/header_panorama.jpg);
 	background-position: center;
 	text-color: White;
@@ -162,6 +163,11 @@ th {
 	font-size: 20px;
 }
 
+.titleList {
+	display: inherit;
+	align-items: center;
+}
+
 #indexLogo {
 	width:200px;
 	height:50px;
@@ -184,6 +190,7 @@ th {
 #menu1 {grid-area: professors;}
 #menu2 {grid-area: courses;}
 #menu3 {grid-area: classes;}
+#login {grid-area: login;}
 
 #calendar {
 	font-family:Tahoma;
@@ -268,6 +275,10 @@ th {
 	text-shadow: 2px 2px #f2f2f2;
 }
 
-.titleList {
-	display: inherit;
+#menu0, #menu3 {
+	border-right: 3px solid white;
+}
+
+#menu1, #login {
+	border-left: 3px solid white;
 }
