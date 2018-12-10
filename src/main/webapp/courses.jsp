@@ -53,7 +53,7 @@
         <option value="422C">422C</option>
       </select>
     </div>
-    <div style = "padding-bottom: 20px; border-bottom: 1px dotted white;">
+    <div style = "padding-bottom: 25px;">
       <form action="/courses" method="post" id="requestCourses">
         <button class = "button">Search</button>
       </form>

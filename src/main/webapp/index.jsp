@@ -24,6 +24,7 @@
 	<a href="#about">About</a>
 	<a href="#services">Services</a>
 	<a href="#clients">Clients</a>
+	
 </div>
 
 <header>
@@ -41,6 +42,22 @@
 		</div>
 		<div id="menu3" class="titleList">
 			<a href=schedule.jsp><p>Schedule</p></a>
+		</div>
+		<div id="login" class="titleList">
+			<%
+	  		UserService userService = UserServiceFactory.getUserService();
+	    	User user = userService.getCurrentUser();
+		    if (user != null) {
+		      pageContext.setAttribute("user", user); %>
+			<p style="color:white;">User: ${fn:escapeXml(user.nickname)}</p>
+			<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" style="color:black; margin-left: 200px;">Sign out</a>
+			<%
+			} else {
+			%>
+			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
+			<%
+		    }
+			%>
 		</div>
 	</div>
 </header>
@@ -97,7 +114,7 @@ function showSlides() {
   setTimeout(showSlides, 4000); // Change image every 2 seconds
 }
 </script>
-
+		
 	<!-- PAGE CONTENT -->
 	<div class="main">
 		<p>
@@ -117,17 +134,6 @@ function showSlides() {
 		<p>
 
 		</p>
-
-
-	</div>
-	
-	
-	
-	<div>
-		<form action="/test" method="post">
-			<div><input type="submit" value="Post" class="button"/></div>
-		</form>
-	
 	</div>
 
 	<!-- PAGE FOOTER -->
@@ -141,34 +147,6 @@ function showSlides() {
 		<!-- DELETE THE LINK BELOW -->
 		<a style="color: Black" href=error.html>Error testing link</a>
 	</div>
-<%-- 	  	<%
-	  		UserService userService = UserServiceFactory.getUserService();
-
-	    	User user = userService.getCurrentUser();
-
-		    if (user != null) {
-
-		      pageContext.setAttribute("user", user);
-
-		%>
-
-						<p>User: ${fn:escapeXml(user.nickname)}</p>
-
-						<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Sign out</a>
-
-		<%
-
-		    } else {
-
-		%>
-						<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
-
-		<%
-
-		    }
-
-		%>
- --%>
 
 
 

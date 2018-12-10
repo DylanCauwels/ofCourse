@@ -250,12 +250,10 @@ th {
 
 #search {
 	border-bottom: 2px solid white;
-	padding-bottom: 20px;
 }
 
 #search div {
-	border-top: 1px dotted white;
-	margin-top: 15px;
+	margin-top: 25px;
 }
 
 .errorPageTeam {

@@ -38,9 +38,34 @@
 </head>
 
 <div class="sidenav">
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#clients">Clients</a>
+  <div>
+    <h1>Search</h1>
+  </div>
+  <div id="search">
+  	<div>
+      <a href="#Prefix">Field of Study</a>
+      <select required name="prefix" form="requestCourses">
+        <option value="EE">EE</option>
+        <option value="ME">ME</option>
+        <option value="BME">BME</option>
+        <option value="CE">CE</option>
+      </select>
+    </div>
+    <div>
+      <a href="#services">Course Number</a>
+      <select required name="number" form="requestCourses">
+        <option value="313">313</option>
+        <option value="316">316</option>
+        <option value="411">411</option>
+        <option value="422C">422C</option>
+      </select>
+    </div>
+    <div style="padding-bottom: 25px;">
+      <form action="/courses" method="post" id="requestCourses">
+        <button class="button">Find Schedule</button>
+      </form>
+    </div>
+  </div>
 </div>
 
 <header>
@@ -62,26 +87,6 @@
 </header>
 
 <body align="center">
-  <div>
-    <!--<button onclick="addEvent()" type="button" name="">Add Event</button>-->
-    <button onclick="removeEvent()" type="button" name="">Remove Event</button>
-  </div>
-  
-  <script>
-  var removeEvent = function() {
-	  var filePath = 'schedule_events/1.txt';
-	  var xmlhttp = new XMLHttpRequest();
-	  xmlhttp.open("GET",filePath,false);
-	  xmlhttp.send(null);
-	  var fileContent = xmlhttp.responseText;
-	  
-	  var fileLines = fileContent.split('\n');
-  }
-  
-  
-  </script>
-  
-  
   
   
   <!--<script>
@@ -115,9 +120,8 @@ var fileContent = xmlhttp.responseText;
 </script>-->
   <div class="main">
     <div align="center">
-      <h2>Schedule</h2>
+      <h2 style="font-size:30px;">Schedule</h2>
     </div>
-    <p id="testOutput">hello</p>
     <div align="center">
       <div style="width: 80%; height: 100%" id='calendar'></div>
     </div>
