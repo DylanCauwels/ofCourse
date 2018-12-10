@@ -172,12 +172,12 @@ th {
 
 }
 
-#indexLogoLink {
+/*#indexLogoLink {
 	width:300px;
-}
+}*/
 
 #menu0:hover {
-	background-color: rgba(88,88,88,0.80);
+	background-color: rgba(88,88,88,0.8);
 }
 
 #menu0 {grid-area: logo}

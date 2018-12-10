@@ -24,7 +24,7 @@
 	<a href="#about">About</a>
 	<a href="#services">Services</a>
 	<a href="#clients">Clients</a>
-	
+
 </div>
 
 <header>
@@ -32,7 +32,7 @@
 	<div class="grid-container" id="index-grid-container">
 
 		<div id="menu0">
-			<a href=index.jsp><img id="indexLogo" src="images/logo_no_background.png" alt="littytitty" style="background-color: rgba(88,88,88,0.80);"></a>
+			<a href=index.jsp><img id="indexLogo" src="images/logo_no_background.png" alt="littytitty" ></a>
 		</div>
 		<div id="menu1" class="titleList">
 			<a href=professors.jsp><p>Professors</p></a>
@@ -114,7 +114,7 @@ function showSlides() {
   setTimeout(showSlides, 4000); // Change image every 2 seconds
 }
 </script>
-		
+
 	<!-- PAGE CONTENT -->
 	<div class="main">
 		<p>

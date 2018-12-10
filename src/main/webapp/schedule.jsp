@@ -71,9 +71,9 @@
 <header>
   <!-- HEADER MENU -->
   <div class="grid-container">
-    <div id="menu0">
-      <a href=index.jsp id="indexLogoLink"><img id="indexLogo" src="images/logo_no_background.png" alt="littytitty">
-    </div>
+    <div id="menu0" style="margin-bottom: 10px; margin-top: 10px">
+			<a href=index.jsp><img id="indexLogo" src="images/logo_no_background.png" alt="littytitty" ></a>
+		</div>
     <div id="menu1" class="titleList">
 			<a href=professors.jsp><p>Professors</p></a>
 		</div>
@@ -87,8 +87,8 @@
 </header>
 
 <body align="center">
-  
-  
+
+
   <!--<script>
   var addEvent = function() {
 
