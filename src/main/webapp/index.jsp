@@ -31,7 +31,7 @@
 	<div class="grid-container" id="index-grid-container">
 
 		<div id="menu0">
-			<a href=index.jsp><img src="images/logo_no_background.png" alt="littytitty" style="width:100px;height:25px;"></a>
+			<a href=index.jsp><img id="indexLogo" src="images/logo_no_background.png" alt="littytitty" ></a>
 		</div>
 		<div id="menu1" class="titleList">
 			<a href=professors.jsp><p>Professors</p></a>
@@ -140,14 +140,14 @@ function showSlides() {
 
 
 	</div>
-	
-	
-	
+
+
+
 	<div>
 		<form action="/test" method="post">
 			<div><input type="submit" value="Post" class="button"/></div>
 		</form>
-	
+
 	</div>
 
 	<!-- PAGE FOOTER -->
