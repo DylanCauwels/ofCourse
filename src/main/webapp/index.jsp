@@ -31,7 +31,7 @@
 	<div class="grid-container" id="index-grid-container">
 
 		<div id="menu0">
-			<a href=index.jsp><img src="images/logo_no_background.png" alt="littytitty" style="width:100px;height:25px;"></a>
+			<a href=index.jsp><img id="indexLogo" src="images/logo_no_background.png" alt="littytitty" style="background-color: rgba(88,88,88,0.80);"></a>
 		</div>
 		<div id="menu1" class="titleList">
 			<a href=professors.jsp><p>Professors</p></a>
@@ -46,26 +46,6 @@
 </header>
 
 <body align="center">
-
-	<!-- TESTING -->
-	<div>
-    <button onclick="addEvent()" type="button" name="">Add Event</button>
-  </div>
-
-  <script>
-  var addEvent = function() {
-		window.location='schedule.jsp';
-    var testEvent = {
-      title  : 'Render Event',
-      start  : '2018-01-02T12:30:00',
-      end	 : '2018-01-02T14:00:00'
-    }
-
-    $('#calendar').fullCalendar('renderEvent', testEvent, true);
-  }
-  </script>
-
-
 
 <div class="container">
 	<!-- Slideshow container -->

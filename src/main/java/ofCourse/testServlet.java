@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class testServlet
@@ -14,7 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 public class testServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("courses.jsp:");
+		HttpSession session = request.getSession();
+		session.setAttribute("FormADataList", "lovely");
+		response.sendRedirect("/courses.jsp?var=");
 	}
 
 }

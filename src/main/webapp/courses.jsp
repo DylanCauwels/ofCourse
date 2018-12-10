@@ -12,6 +12,7 @@
 
 <%@ page import="com.googlecode.objectify.*" %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
 	String filteredSearchTerm = request.getParameter("filteredSearchTerm");
@@ -36,7 +37,7 @@
   <div id="search">
     <div>
       <a href="#Prefix">Field of Study</a>
-      <select required >
+      <select required name="prefix" form="requestCourses">
         <option value="EE">EE</option>
         <option value="ME">ME</option>
         <option value="BME">BME</option>
@@ -45,15 +46,17 @@
     </div>
     <div>
       <a href="#services">Course Number</a>
-      <select required>
+      <select required name="number" form="requestCourses">
         <option value="313">313</option>
         <option value="316">316</option>
         <option value="411">411</option>
         <option value="422C">422C</option>
       </select>
     </div>
-    <div style = "padding-bottom: 15px; border-bottom: 1px dotted white;">
-      <button class = "button">Search</button>
+    <div style = "padding-bottom: 20px; border-bottom: 1px dotted white;">
+      <form action="/courses" method="post" id="requestCourses">
+        <button class = "button">Search</button>
+      </form>
     </div>
   </div>
 </div>
@@ -62,7 +65,7 @@
   <!-- HEADER MENU -->
   <div class="grid-container">
     <div id="menu0">
-      <a href=index.jsp><img src="images/logo_no_background.png" alt="littytitty" style="width:100px;height:25px;">
+      <a href=index.jsp id="indexLogoLink"><img id="indexLogo" src="images/logo_no_background.png" alt="littytitty">
     </div>
     <div id="menu1" class="titleList">
 			<a href=professors.jsp><p>Professors</p></a>
@@ -80,7 +83,7 @@
   <div class="main">
     <!-- PAGE CONTENT -->
     <table align="center" id="displaytable">
-      <h2 style="font-size:30px;">EE 461L Sections</h1>
+      <h2 style="font-size:30px;"> <% if(request.getParameter("prefix") != null) { %> <%= request.getParameter("prefix") %> <%= request.getParameter("number") %> <%} %> Sections</h1>
       <tr id="tableheader">
         <th>Unique Number</th>
         <th>Last Name</th>
@@ -88,27 +91,29 @@
         <th>RMP Rating</th>
         <th>Average Grade</th>
       </tr>
-      <tr>
-        <td>11001</td>
-        <td>Eberlein</td>
-        <td>M</td>
-        <td>1.0</td>
-        <td>1.0</td>
-      </tr>
-      <tr>
-        <td>11050</td>
-        <td>Cuevas</td>
-        <td>A</td>
-        <td>2.5</td>
-        <td>3.0</td>
-      </tr>
-      <tr>
-        <td>11010</td>
-        <td>Julien</td>
-        <td>C</td>
-        <td>3.2</td>
-        <td>4.0</td>
-      </tr>
+      <%
+      	ArrayList<String> sections = (ArrayList<String>)session.getAttribute("courses");
+      	if(sections != null) {
+      		pageContext.setAttribute("courses", sections);
+	      	int sectionNum = sections.size()/5;
+	      	for(int i = 0; i < sectionNum; i++) {
+	      		pageContext.setAttribute("first", sections.get(5*i));
+	      		pageContext.setAttribute("second", sections.get((5*i)+1));
+	      		pageContext.setAttribute("third", sections.get((5*i)+2));
+	      		pageContext.setAttribute("fourth", sections.get((5*i)+3));
+	      		pageContext.setAttribute("fifth", sections.get((5*i)+4));
+	      		%> 	<tr>
+	      				<td> ${fn:escapeXml(first)} </td>
+	      				<td>  ${fn:escapeXml(second)} </td>
+						<td>  ${fn:escapeXml(third)} </td>
+						<td>  ${fn:escapeXml(fourth)} </td>
+						<td>  ${fn:escapeXml(fifth)} </td>    		
+	      		
+	      			</tr>
+	      		<%
+	      	}
+      	}
+      %>
     </table>
 
   </div>

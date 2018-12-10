@@ -3,13 +3,28 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
-  	<servlet-name>test</servlet-name>
-  	<servlet-class>ofCourse.testServlet</servlet-class>
+    <servlet-name>test</servlet-name>
+    <servlet-class>ofCourse.testServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>test</servlet-name>
-  	<url-pattern>/test</url-pattern>
+    <servlet-name>test</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>course</servlet-name>
+    <servlet-class>ofCourse.courseServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>course</servlet-name>
+    <url-pattern>/courses</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>professor</servlet-name>
+  	<servlet-class>ofCourse.professorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>professor</servlet-name>
+  	<url-pattern>/professors</url-pattern>
   </servlet-mapping>
 </web-app>

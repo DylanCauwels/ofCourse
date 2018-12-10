@@ -37,7 +37,7 @@
   <div id="search">
     <div>
       <a href="#Prefix">Last Name</a>
-      <select required >
+      <select required name="lastName" form="requestProfessors">
         <option value="Eberlein">Eberlein</option>
         <option value="Cuevas">Cuevas</option>
         <option value="Nandakumar">Nandakumar</option>
@@ -46,16 +46,17 @@
     </div>
     <div>
       <a href="#services">First Initial</a>
-      <select required>
-        <option value="313">313</option>
-        <option value="316">316</option>
-        <option value="411">411</option>
-        <option value="422C">422C</option>
+      <select required name="firstInitial" form="requestProfessors">
+        <option value="M">M</option>
+        <option value="J">J</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
       </select>
     </div>
     <div style = "padding-bottom: 15px; border-bottom: 1px dotted white;">
-      <button class = "button">Find Sections</button>
-    </div>
+      <form action="/professors" method="post" id="requestProfessors">
+        <button class = "button">Search</button>
+      </form>    </div>
   </div>
 </div>
 
@@ -63,7 +64,7 @@
   <!-- HEADER MENU -->
   <div class="grid-container">
     <div id="menu0">
-      <a href=index.jsp><img src="images/logo_no_background.png" alt="littytitty" style="width:100px;height:25px;">
+      <a href=index.jsp id="indexLogoLink"><img id="indexLogo" src="images/logo_no_background.png" alt="littytitty">
     </div>
     <div id="menu1" class="titleList, curr">
 			<a href=professors.jsp><p>Professors</p></a>
@@ -80,7 +81,7 @@
 <body align="center">
 
   <div class="main">
-    <h2 style="font-size:30px;">Eberlein, M Sections</h1>
+    <h2 style="font-size:30px;"><% if(request.getParameter("firstInitial") != null) { %> <%= request.getParameter("lastName") %>, <%= request.getParameter("firstInitial") %> <%} %>Sections</h1>
     <!-- PAGE CONTENT -->
     <table align="center" id="displaytable">
       <tr id="tableheader">
@@ -90,27 +91,29 @@
         <th>RMP Rating</th>
         <th>Average Grade</th>
       </tr>
-      <tr>
-        <td>13050</td>
-        <td>EE</td>
-        <td>461L</td>
-        <td>1.0</td>
-        <td>1.0</td>
-      </tr>
-      <tr>
-        <td>13055</td>
-        <td>EE</td>
-        <td>316</td>
-        <td>2.5</td>
-        <td>3.0</td>
-      </tr>
-      <tr>
-        <td>13060</td>
-        <td>EE</td>
-        <td>360C</td>
-        <td>3.2</td>
-        <td>4.0</td>
-      </tr>
+      <%
+      	ArrayList<String> sections = (ArrayList<String>)session.getAttribute("professors");
+      	if(sections != null) {
+      		pageContext.setAttribute("professors", sections);
+	      	int sectionNum = sections.size()/5;
+	      	for(int i = 0; i < sectionNum; i++) {
+	      		pageContext.setAttribute("first", sections.get(5*i));
+	      		pageContext.setAttribute("second", sections.get((5*i)+1));
+	      		pageContext.setAttribute("third", sections.get((5*i)+2));
+	      		pageContext.setAttribute("fourth", sections.get((5*i)+3));
+	      		pageContext.setAttribute("fifth", sections.get((5*i)+4));
+	      		%> 	<tr>
+	      				<td> ${fn:escapeXml(first)} </td>
+	      				<td>  ${fn:escapeXml(second)} </td>
+						<td>  ${fn:escapeXml(third)} </td>
+						<td>  ${fn:escapeXml(fourth)} </td>
+						<td>  ${fn:escapeXml(fifth)} </td>    		
+	      		
+	      			</tr>
+	      		<%
+	      	}
+      	}
+      %>
     </table>
 
   </div>

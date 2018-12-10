@@ -47,7 +47,7 @@
   <!-- HEADER MENU -->
   <div class="grid-container">
     <div id="menu0">
-      <a href=index.jsp><img src="images/logo_no_background.png" alt="littytitty" style="width:100px;height:25px;">
+      <a href=index.jsp id="indexLogoLink"><img id="indexLogo" src="images/logo_no_background.png" alt="littytitty">
     </div>
     <div id="menu1" class="titleList">
 			<a href=professors.jsp><p>Professors</p></a>
