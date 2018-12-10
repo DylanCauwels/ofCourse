@@ -20,11 +20,11 @@
     <url-pattern>/courses</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>professor</servlet-name>
-  	<servlet-class>ofCourse.professorServlet</servlet-class>
+    <servlet-name>professor</servlet-name>
+    <servlet-class>ofCourse.professorServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>professor</servlet-name>
-  	<url-pattern>/professors</url-pattern>
+    <servlet-name>professor</servlet-name>
+    <url-pattern>/professors</url-pattern>
   </servlet-mapping>
 </web-app>

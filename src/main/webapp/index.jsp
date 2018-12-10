@@ -20,10 +20,10 @@
 
 </head>
 
-<div class="sidenav">
-	<a href="#about">About</a>
-	<a href="#services">Services</a>
-	<a href="#clients">Clients</a>
+<div class="sidenav" id="index">
+	<a href="#about"><h1>About</h1></a>
+	<a href="#services"><h1>Services</h1></a>
+	<a href="#clients"><h1>Clients</h1></a>
 
 </div>
 
@@ -31,26 +31,26 @@
 	<!-- HEADER MENU -->
 	<div class="grid-container" id="index-grid-container">
 
-		<div id="menu0">
+		<div id="menu0" style="margin-bottom: 10px; margin-top: 10px">
 			<a href=index.jsp><img id="indexLogo" src="images/logo_no_background.png" alt="littytitty" ></a>
 		</div>
-		<div id="menu1" class="titleList">
-			<a href=professors.jsp><p>Professors</p></a>
+		<div id="menu1" class="indexList">
+			<a href=professors.jsp style="margin-left:10px;"><p>Professors</p></a>
 		</div>
-		<div id="menu2" class="titleList">
+		<div id="menu2" class="indexList">
 			<a href=courses.jsp><p>Courses</p></a>
 		</div>
-		<div id="menu3" class="titleList">
-			<a href=schedule.jsp><p>Schedule</p></a>
+		<div id="menu3" class="indexList">
+			<a href=schedule.jsp style="margin-right:10px;"><p>Schedule</p></a>
 		</div>
-		<div id="login" class="titleList">
+		<div id="login">
 			<%
 	  		UserService userService = UserServiceFactory.getUserService();
 	    	User user = userService.getCurrentUser();
 		    if (user != null) {
 		      pageContext.setAttribute("user", user); %>
-			<p style="color:white;">User: ${fn:escapeXml(user.nickname)}</p>
-			<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" style="color:black; margin-left: 200px;">Sign out</a>
+			<p style="color:white; margin-bottom:5px; margin-top:5px;">User: ${fn:escapeXml(user.nickname)}</p> 
+			<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" style="color:white; align-content:center;">Sign out</a>
 			<%
 			} else {
 			%>

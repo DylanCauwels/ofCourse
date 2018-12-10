@@ -104,7 +104,6 @@ th {
 
 #index-grid-container {
 	background-image: url(images/header_panorama.png);
-	padding-bottom: 20px;
 }
 
 .curr {
@@ -144,8 +143,13 @@ th {
 	background-color: #cecece;
 }
 
-.grid-container div:hover {
-		background-color: #e86800;
+.titleList a:hover {
+	background-color: #e86800;
+	
+}
+
+.indexList a:hover, #index a:hover {
+	background-color: rgba(192,192,192,0.5);
 }
 
 .footer {
@@ -156,7 +160,7 @@ th {
 }
 
 .footerBlock {
-		display: inline-block;
+	display: inline-block;
 }
 
 .title {
@@ -165,7 +169,22 @@ th {
 
 .titleList {
 	display: inherit;
-	align-items: center;
+	align-self: center;
+	height: 63;
+}
+
+.titleList a {
+	align-self: center;
+}
+
+.indexlist {
+	display: inherit;
+	align-self: center;
+}
+
+.indexList a {
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 #indexLogo {
@@ -174,23 +193,23 @@ th {
 	margin-top: 0px;
 }
 
-#indexLogo:hover {
-
-}
-
 /*#indexLogoLink {
 	width:300px;
 }*/
 
-#menu0:hover {
+/* #menu0:hover {
 	background-color: rgba(88,88,88,0.8);
-}
+} */
 
 #menu0 {grid-area: logo}
 #menu1 {grid-area: professors;}
 #menu2 {grid-area: courses;}
 #menu3 {grid-area: classes;}
-#login {grid-area: login;}
+#login {
+	grid-area: login;
+	height: 50px;
+	align-self: center;
+}
 
 #calendar {
 	font-family:Tahoma;
@@ -260,7 +279,7 @@ th {
 }
 
 #search div {
-	margin-top: 25px;
+	margin-top: 40px;
 }
 
 .errorPageTeam {
@@ -282,3 +301,43 @@ th {
 #menu1, #login {
 	border-left: 3px solid white;
 }
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 90%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #e86800; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
