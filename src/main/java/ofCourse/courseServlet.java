@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class courseServlet
  */
-@WebServlet("/courseServlet")
+@WebServlet("/courses")
 public class courseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

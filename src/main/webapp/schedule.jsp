@@ -42,42 +42,28 @@
     <h1>Search</h1>
   </div>
   <div id="search">
-  	<div>
-      <a href="#Prefix">Field of Study</a>
-      <select required name="prefix" form="requestCourses">
-        <option value="EE">EE</option>
-        <option value="ME">ME</option>
-        <option value="BME">BME</option>
-        <option value="CE">CE</option>
-      </select>
-    </div>
-    <div>
-      <a href="#services">Course Number</a>
-      <select required name="number" form="requestCourses">
-        <option value="313">313</option>
-        <option value="316">316</option>
-        <option value="411">411</option>
-        <option value="422C">422C</option>
-      </select>
-    </div>
-    <div class="slidecontainer">
-    	<a>Schedule Weight</a>
-    	<p style="color:white;"> CIS ------------------ RMP </p>
-  		<input type="range" min="1" max="5" value="2" class="slider" id="myRange">
-  		<h2 id="demo" style="color:white;"></h2>
-  		<script>
-  			var slider = document.getElementById("myRange");
-	  		var output = document.getElementById("demo");
-	  		output.innerHTML = slider.value; // Display the default slider value
-	
-	  		// Update the current slider value (each time you drag the slider handle)
-	  		slider.oninput = function() {
-	  		  output.innerHTML = this.value;
-	  		}
-  		</script>
-	</div>
     <div style="padding-bottom: 25px;">
-      <form action="/courses" method="post" id="requestCourses">
+      <form action="/schedule" method="post" id="requestCourses">
+	  	<div>
+	      <a>Enter Desired Courses</a>
+	      <textarea name="title" rows="1" cols="30" style="width:90%; height:100;"></textarea>
+	    </div>
+	    <div class="slidecontainer">
+	    	<a>Schedule Weight</a>
+	    	<p style="color:white;"> CIS ------------------ RMP </p>
+	  		<input name="slider" type="range" min="1" max="5" value="2" class="slider" id="myRange">
+	  		<h2 id="demo" style="color:white;"></h2>
+	  		<script>
+	  			var slider = document.getElementById("myRange");
+		  		var output = document.getElementById("demo");
+		  		output.innerHTML = slider.value; // Display the default slider value
+		
+		  		// Update the current slider value (each time you drag the slider handle)
+		  		slider.oninput = function() {
+		  		  output.innerHTML = this.value;
+		  		}
+	  		</script>
+		</div>
         <button class="button">Find Schedule</button>
       </form>
     </div>

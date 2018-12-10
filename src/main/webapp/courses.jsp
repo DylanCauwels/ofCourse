@@ -23,7 +23,11 @@
 
 
 <html>
-
+<script>
+	$(document).ready(function(){
+	     $("#getPrefix").submit();
+	});
+</script>
 
 <head>
   <title>Courses</title>
@@ -36,26 +40,38 @@
   </div>
   <div id="search">
     <div>
-      <a href="#Prefix">Field of Study</a>
+      <a>Field of Study</a>
       <select required name="prefix" form="requestCourses">
-        <option value="EE">EE</option>
-        <option value="ME">ME</option>
-        <option value="BME">BME</option>
-        <option value="CE">CE</option>
+	      <%
+	      	ArrayList<String> prefixes = (ArrayList<String>)session.getAttribute("prefixes");
+	      	if(prefixes != null) {
+ 		      	for(int i = 0; i < prefixes.size(); i++) {
+		      		%> 	<option value="<%=prefixes.get(i)%>"><%=prefixes.get(i)%></option>
+		      		<%
+		      	}
+	      	}
+	      %>
       </select>
     </div>
     <div>
-      <a href="#services">Course Number</a>
+      <a>Course Number</a>
       <select required name="number" form="requestCourses">
-        <option value="313">313</option>
-        <option value="316">316</option>
-        <option value="411">411</option>
-        <option value="422C">422C</option>
+	      <%
+	      	ArrayList<String> numbers = (ArrayList<String>)session.getAttribute("numbers");
+	      	if(numbers != null) {
+ 		      	for(int i = 0; i < numbers.size(); i++) {
+ 		      		%><option value="<%=numbers.get(i)%>"><%=numbers.get(i)%></option>
+		      		<%
+		      	}
+	      	}
+	      %>
       </select>
+      <form action="/prefixes" method="post" id="getPrefix" name="getPrefix"></form>
+      <form action="/prefixes" method="get" id="getNumber" name="getNumber"></form>
     </div>
     <div style = "padding-bottom: 25px;">
       <form action="/courses" method="post" id="requestCourses">
-        <button class = "button">Search</button>
+        <button class="button">Search</button>
       </form>
     </div>
   </div>
@@ -134,6 +150,19 @@
 
   </div>
 
+	<% if (session.getAttribute("prefixes") == null) { %>
+	  <script language="javascript" type="text/javascript">
+	  	document.forms["getPrefix"].submit();
+        alert("Getting Initial Data- Prefixes");
+	  </script>
+	<% } %>
+	
+	<% if (session.getAttribute("numbers") == null) { %>
+	  <script language="javascript" type="text/javascript">
+	  	document.forms["getNumber"].submit();
+        alert("Getting Initial Data- Numbers");
+	  </script>
+	<% } %>
   <div class="footer" align="center">
 		<div class = "footerBlock">
 			<a href=index.jsp><img src="images/logo_outlined.png" alt="littytitty" style="width:100px;height:25px;"></a>

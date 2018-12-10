@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class professorServlet
  */
-@WebServlet("/professorServlet")
+@WebServlet("/professors")
 public class professorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -42,16 +42,16 @@ public class professorServlet extends HttpServlet {
 		sections.add("10100");
 		sections.add("EE");
 		sections.add("313");
-		sections.add("6.9");
-		sections.add("4.20");
+		sections.add("4.3");
+		sections.add("4.22");
 		sections.add("10105");
 		sections.add("EE");
 		sections.add("461L");
 		sections.add("3.4");
-		sections.add("Tomato");
+		sections.add("2.3");
 		sections.add("10110");
-		sections.add("Cancer");
-		sections.add("Herself");
+		sections.add("EE");
+		sections.add("411");
 		sections.add("1.2");
 		sections.add("3");
 		sess.setAttribute("professors", sections);

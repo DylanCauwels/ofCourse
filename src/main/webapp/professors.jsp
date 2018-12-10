@@ -13,22 +13,12 @@
 <%@ page import="com.googlecode.objectify.*" %>
 
 
-<%
-	String filteredSearchTerm = request.getParameter("filteredSearchTerm");
-	if(filteredSearchTerm==null){
-		filteredSearchTerm = "";
-	}
-%>
-
-
 <html>
-
 
 <head>
   <link rel="stylesheet" href="style.css">
   <title>Professors</title>
 </head>
-
 
 <div class="sidenav">
   <div>
@@ -36,27 +26,40 @@
   </div>
   <div id="search">
     <div>
-      <a href="#Prefix">Last Name</a>
-      <select required name="lastName" form="requestProfessors">
-        <option value="Eberlein">Eberlein</option>
-        <option value="Cuevas">Cuevas</option>
-        <option value="Nandakumar">Nandakumar</option>
-        <option value="Julien">Julien</option>
+      <a>Last Name</a>
+      <select id="lastName" name="lastName" form="requestProfessors">
+	      <%
+	      	ArrayList<String> names = (ArrayList<String>)session.getAttribute("names");
+	      	if(names != null) {
+ 		      	for(int i = 0; i < names.size(); i++) {
+		      		%> 	<option value="<%=names.get(i)%>"${fn:escapeXml(selected)}><%=names.get(i)%></option>
+		      		<% 
+		      	}	      	
+	      	}
+	      %>
       </select>
     </div>
     <div>
-      <a href="#services">First Initial</a>
+      <a>First Initial</a>
       <select required name="firstInitial" form="requestProfessors">
-        <option value="M">M</option>
-        <option value="J">J</option>
-        <option value="A">A</option>
-        <option value="B">B</option>
+	      <%
+	      	ArrayList<String> initials = (ArrayList<String>)session.getAttribute("initials");
+	      	if(initials != null) {
+ 		      	for(int i = 0; i < initials.size(); i++) {
+		      		%> 	<option value="<%=initials.get(i)%>"><%=initials.get(i)%></option>
+		      		<%
+		      	}
+	      	}
+	      %>
       </select>
+      <form action="/names" method="get" id="getName" name="getName"></form>
+      <form action="/names" method="post" id="getLast" name="getLast"></form>
     </div>
     <div style = "padding-bottom: 25px;">
       <form action="/professors" method="post" id="requestProfessors">
-        <button class = "button">Search</button>
-      </form>    </div>
+        <button class="button">Search</button>
+      </form>    
+    </div>
   </div>
 </div>
 
@@ -142,8 +145,20 @@
 			<p>© 2018-2019 ofCourse.university, Inc., or its affiliates</p>
 		</div>
 	</div>
+	
+	<% if (session.getAttribute("names") == null) { %>
+	  <script language="javascript" type="text/javascript">
+	  	document.forms["getLast"].submit();
+        alert("Getting Initial Data- Names");
+ 	  </script>
+	<% } %>
 
-
+	<% if (session.getAttribute("initials") == null) { %>
+	  <script language="javascript" type="text/javascript">
+	  	document.forms["getName"].submit();
+        alert("Getting Initial Data= Initials");
+ 	  </script>
+	<% } %>
 </body>
 
 </html>

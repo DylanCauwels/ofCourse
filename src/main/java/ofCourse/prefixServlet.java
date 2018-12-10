@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class prefixServlet
  */
-@WebServlet("/prefixServlet")
+@WebServlet("/prefixes")
 public class prefixServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -24,16 +24,16 @@ public class prefixServlet extends HttpServlet {
 		prefixes.add("ME");
 		prefixes.add("CS");
 		sess.setAttribute("prefixes", prefixes);
-		response.sendRedirect((String)request.getAttribute("origin"));
+		response.sendRedirect("/courses.jsp?origin=" + (String)request.getAttribute("origin"));
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sess = request.getSession();
-		ArrayList<Integer> numbers = new ArrayList();
-		numbers.add(312);
-		numbers.add(313);
-		numbers.add(411);
+		ArrayList<String> numbers = new ArrayList();
+		numbers.add("312");
+		numbers.add("313");
+		numbers.add("411");
 		sess.setAttribute("numbers", numbers);
-		response.sendRedirect((String)request.getAttribute("origin"));
+		response.sendRedirect("/courses.jsp?newDun");
 	}
 }
