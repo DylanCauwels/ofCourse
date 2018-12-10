@@ -64,7 +64,26 @@
 <body align="center">
   <div>
     <!--<button onclick="addEvent()" type="button" name="">Add Event</button>-->
+    <button onclick="removeEvent()" type="button" name="">Remove Event</button>
   </div>
+  
+  <script>
+  var removeEvent = function() {
+	  var filePath = 'schedule_events/1.txt';
+	  var xmlhttp = new XMLHttpRequest();
+	  xmlhttp.open("GET",filePath,false);
+	  xmlhttp.send(null);
+	  var fileContent = xmlhttp.responseText;
+	  
+	  var fileLines = fileContent.split('\n');
+  }
+  
+  
+  </script>
+  
+  
+  
+  
   <!--<script>
   var addEvent = function() {
 
