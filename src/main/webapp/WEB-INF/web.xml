@@ -3,48 +3,5 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <servlet-name>test</servlet-name>
-    <servlet-class>ofCourse.testServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>test</servlet-name>
-    <url-pattern>/test</url-pattern>
-  </servlet-mapping>
-  
-<!--   <servlet>
-    <servlet-name>course</servlet-name>
-    <servlet-class>ofCourse.courseServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>course</servlet-name>
-    <url-pattern>/courses</url-pattern>
-  </servlet-mapping> -->
-  
-<!--   <servlet>
-    <servlet-name>professor</servlet-name>
-    <servlet-class>ofCourse.professorServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>professor</servlet-name>
-    <url-pattern>/professors</url-pattern>
-  </servlet-mapping>
-   -->
-<!--   <servlet>
-    <servlet-name>prefix</servlet-name>
-    <servlet-class>ofCourse.prefixServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>prefix</servlet-name>
-    <url-pattern>/prefixes</url-pattern>
-  </servlet-mapping> -->
-  
-<!--   <servlet>
-    <servlet-name>name</servlet-name>
-    <servlet-class>ofCourse.nameServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>name</servlet-name>
-    <url-pattern>/names</url-pattern>
-  </servlet-mapping> -->
+
 </web-app>

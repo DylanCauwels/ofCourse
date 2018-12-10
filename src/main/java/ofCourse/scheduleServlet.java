@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Algorithm.Algorithm;
+import Algorithm.Schedule;
+
 /**
  * Servlet implementation class scheduleServlet
  */
@@ -24,10 +27,16 @@ public class scheduleServlet extends HttpServlet {
 			for(int i = 0; i < (splited.length - 1); i+=2) {
 				input.add(splited[i] + " " + splited[i + 1]);
 			}
-			response.sendRedirect("/schedule.jsp?input=" + request.getParameter("courses"));
-		}
-		catch (Exception e) {
-			response.sendRedirect("/error.html");
+			Algorithm alg = new Algorithm(input);
+			Schedule sched = alg.run();
+			if(sched != null) {
+				response.sendRedirect("/schedule.jsp?status=success");
+				
+			} else {
+				response.sendRedirect("/schedule.jsp?status=fail");			
+			}
+		} catch (Exception e) {
+			response.sendRedirect("/schedule.jsp?error");
 		}
 	}
 }
