@@ -123,7 +123,7 @@ function showSlides() {
 		<br>
 		<h2 id="about">About</h2>
 		<p>
-			ofCourse started in 2018 at The University of Texas at Austin. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			ofCourse started in 2018 at The University of Texas at Austin by five Electrical Engineering students. Fed up with the archaic and unreliable registration system, they sought to create a platform that streamlined the course registration process. ofCourse runs on Google App Engine and is available for use to the public.
 		</p>
 		<br>
 		<h2 id="services">Services</h2>
@@ -132,8 +132,13 @@ function showSlides() {
 		</p>
 		<h2 id="clients">Clients</h2>
 		<p>
-
+			Here are some of our more notable clients:
 		</p>
+		<table align="center"><tr>
+			<td><img style="margin: 0px; width:200px; height:200px; overflow: hidden" src="/images/spiderman.jpg"></td>
+			<td><img style="margin: 0px; width:200px; height:200px; overflow: hidden" src="/images/obama.jpg"></td>
+			<td><img style="margin: 0px; width:200px; height:200px; overflow: hidden" src="/images/oprah.jpg"></td>
+		</tr></table>
 	</div>
 
 	<!-- PAGE FOOTER -->
