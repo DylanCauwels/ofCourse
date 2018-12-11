@@ -24,8 +24,9 @@ public class Query {
     public Query(){
         //this.prefs = prefs;
         try {
-            System.out.println(System.getProperty("user.dir"));
-            FileInputStream serviceAccount = new FileInputStream( System.getProperty("user.dir") + ("/src/Algorithm/ofCourse-18db9e6c8815.json"));
+            //System.out.println(System.getProperty("user.dir"));
+            FileInputStream serviceAccount = new FileInputStream( System.getProperty("user.dir") + ("/src/main/java/Algorithm/ofCourse-18db9e6c8815.json"));
+            //FileInputStream serviceAccount = new FileInputStream("/Users/Jake/Desktop/ofCourse/src/main/java/Algorithm/ofCourse-18db9e6c8815.json");
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                     .setProjectId("ofcourse-225107")
