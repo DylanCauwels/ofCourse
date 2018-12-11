@@ -20,21 +20,11 @@ public class courseServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sess = request.getSession();
 		ArrayList<String> sections = new ArrayList();
-		sections.add("10100");
-		sections.add("Cauwels");
-		sections.add("D");
-		sections.add("5.0");
-		sections.add("4.0");
-		sections.add("10105");
-		sections.add("Eberlein");
-		sections.add("M");
-		sections.add("4.0");
-		sections.add("3.5");
-		sections.add("10110");
-		sections.add("Cuevas");
-		sections.add("A");
-		sections.add("8.9 ");
-		sections.add("10.0");
+		sections.add("32155");
+		sections.add("NAULT");
+		sections.add("C");
+		sections.add("3.74");
+		sections.add("4.6");
 		sess.setAttribute("courses", sections);
 		response.sendRedirect("/courses.jsp?prefix=" + request.getParameter("prefix") + "&number=" + request.getParameter("number"));
 	}

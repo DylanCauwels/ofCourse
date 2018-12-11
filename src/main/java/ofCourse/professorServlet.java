@@ -39,21 +39,16 @@ public class professorServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sess = request.getSession();
 		ArrayList<String> sections = new ArrayList();
-		sections.add("10100");
-		sections.add("EE");
-		sections.add("313");
-		sections.add("4.3");
-		sections.add("4.22");
-		sections.add("10105");
-		sections.add("EE");
-		sections.add("461L");
-		sections.add("3.4");
-		sections.add("2.3");
-		sections.add("10110");
-		sections.add("EE");
-		sections.add("411");
-		sections.add("1.2");
-		sections.add("3");
+		sections.add("51585");
+		sections.add("CS");
+		sections.add("345");
+		sections.add("4.5");
+		sections.add("3.93");
+		sections.add("51805");
+		sections.add("CS");
+		sections.add("386L");
+		sections.add("4.5");
+		sections.add("3.93");
 		sess.setAttribute("professors", sections);
 		response.sendRedirect("/professors.jsp?lastName=" + request.getParameter("lastName") + "&firstInitial=" + request.getParameter("firstInitial"));
 	}

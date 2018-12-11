@@ -22,9 +22,7 @@ public class nameServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession sess = request.getSession();
 		ArrayList<String> initials = new ArrayList();
-		initials.add("M");
-		initials.add("J");
-		initials.add("Z");
+		initials.add("W");
 		sess.setAttribute("initials", initials);
 		response.sendRedirect("/professors.jsp?lastNamePref=" + request.getParameter("lastNamePref"));	
 		}
@@ -35,9 +33,27 @@ public class nameServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sess = request.getSession();
 		ArrayList<String> names = new ArrayList();
-		names.add("John");
-		names.add("Steve");
-		names.add("Ron");
+		names.add("ADAIR");
+		names.add("AWAS");
+		names.add("BARBOUR");
+		names.add("BECK");
+		names.add("BREECKER");
+		names.add("CARTER");
+		names.add("COOK");
+		names.add("EVANS");
+		names.add("FAGELSON");
+		names.add("FELKNER");
+		names.add("GAGLIO");
+		names.add("HENRY");
+		names.add("LATHAM");
+		names.add("MCDONALD");
+		names.add("MCDANIEL");
+		names.add("MEADOWS");
+		names.add("MELCHER");
+		names.add("NEITZKE");
+		names.add("NEFF");
+		names.add("NEHRING");
+		names.add("OLMSTEAD");
 		sess.setAttribute("names", names);
 		response.sendRedirect("/professors.jsp?lastNamePref=" + request.getParameter("lastName"));
 	}
