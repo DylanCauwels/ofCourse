@@ -49,12 +49,12 @@
 	    	User user = userService.getCurrentUser();
 		    if (user != null) {
 		      pageContext.setAttribute("user", user); %>
-			<p style="color:white; margin-bottom:5px; margin-top:5px;">User: ${fn:escapeXml(user.nickname)}</p> 
-			<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" style="color:white; align-content:center;">Sign out</a>
+			<p id="email">${fn:escapeXml(user.nickname)}</p> 
+			<a id="signout" href="<%=userService.createLogoutURL(request.getRequestURI())%>">Sign Out</a>
 			<%
 			} else {
 			%>
-			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
+			<a id="signin" href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log In</a>
 			<%
 		    }
 			%>
@@ -141,6 +141,51 @@ function showSlides() {
 		</tr></table>
 	</div>
 
+
+	<div>
+		<form action="/professors" method="get">
+			<div>
+				<p>U#</p>
+				<textarea name="uniqueId" rows="1" cols="10"></textarea>
+			</div>
+			<div>
+				<p>Class Days</p>
+				<textarea name="classDays" rows="1" cols="10"></textarea>
+			</div>
+			<div>
+				<p>startTime</p>
+				<textarea name="startTime" rows="1" cols="10"></textarea>
+			</div>
+			<div>
+				<p>endTime</p>
+				<textarea name="endTime" rows="1" cols="10"></textarea>
+			</div>
+			<div>
+				<p>course</p>
+				<textarea name="course" rows="1" cols="10"></textarea>
+			</div>
+			<div>
+				<p>prefix</p>
+				<textarea name="prefix" rows="1" cols="10"></textarea>
+			</div>
+			<div>
+				<p>number</p>
+				<textarea name="number" rows="1" cols="10"></textarea>
+			</div>
+			<div>
+				<p>initial</p>
+				<textarea name="initial" rows="1" cols="10"></textarea>
+			</div>
+			<div>
+				<p>name</p>
+				<textarea name="name" rows="1" cols="10"></textarea>
+			</div>
+			<input type="submit" value="Post" class="button"/>
+		</form>
+	</div>
+	
+	
+	
 	<!-- PAGE FOOTER -->
 	<div class="footer" align="center">
 		<div class = "footerBlock">

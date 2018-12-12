@@ -58,7 +58,7 @@ public class Query {
         String prefix = (String)document.getData().get("prefix");
         String number = (String)document.getData().get("number");
         double rating = Double.parseDouble((String)document.getData().get("rmp-rating"));
-        Section ret = new Section(Integer.parseInt(section), days, start, end, prefix + " " + number, rating);
+        Section ret = new Section(Integer.parseInt(section), days, start, end, prefix + " " + number, "test", "test", "test", "test");
         return ret;
     }
 

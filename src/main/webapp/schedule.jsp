@@ -91,12 +91,12 @@
 	    	User user = userService.getCurrentUser();
 		    if (user != null) {
 		      pageContext.setAttribute("user", user); %>
-			<p style="color:white; margin-bottom:5px; margin-top:5px;">User: ${fn:escapeXml(user.nickname)}</p> 
-			<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" style="color:white; align-content:center;">Sign out</a>
+			<p id="email">${fn:escapeXml(user.nickname)}</p> 
+			<a id="signout" href="<%=userService.createLogoutURL(request.getRequestURI())%>">Sign Out</a>
 			<%
 			} else {
 			%>
-			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
+			<a id="signin" href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log In</a>
 			<%
 		    }
 			%>

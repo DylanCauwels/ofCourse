@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.googlecode.objectify.ObjectifyService;
+
 /**
  * Servlet implementation class courseServlet
  */
@@ -19,14 +21,9 @@ public class courseServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sess = request.getSession();
-		ArrayList<String> sections = new ArrayList();
-		sections.add("32155");
-		sections.add("NAULT");
-		sections.add("C");
-		sections.add("3.74");
-		sections.add("4.6");
-		sess.setAttribute("courses", sections);
-		response.sendRedirect("/courses.jsp?prefix=" + request.getParameter("prefix") + "&number=" + request.getParameter("number"));
+		ObjectifyService.register(Algorithm.Section.class);
+		response.sendRedirect("/courses.jsp?prefix=" + request.getParameter("prefix") + 
+				"&number=" + request.getParameter("number"));
 	}
 
 }

@@ -43,11 +43,11 @@
       <a>Field of Study</a>
       <select required name="prefix" form="requestCourses">
 	      <%
-	      	ArrayList<String> prefixes = (ArrayList<String>)session.getAttribute("prefixes");
+	      	Set<String> prefixes = (Set<String>)session.getAttribute("prefixes");
 	      	if(prefixes != null) {
- 		      	for(int i = 0; i < prefixes.size(); i++) {
-		      		%> 	<option value="<%=prefixes.get(i)%>"><%=prefixes.get(i)%></option>
-		      		<%
+	    		for(String curr: prefixes) {
+		      		%> 	<option value="<%=curr%>"><%=curr%></option>
+		      		<% 
 		      	}
 	      	}
 	      %>
@@ -57,17 +57,16 @@
       <a>Course Number</a>
       <select required name="number" form="requestCourses">
 	      <%
-	      	ArrayList<String> numbers = (ArrayList<String>)session.getAttribute("numbers");
+	      	Set<String> numbers = (Set<String>)session.getAttribute("numbers");
 	      	if(numbers != null) {
- 		      	for(int i = 0; i < numbers.size(); i++) {
- 		      		%><option value="<%=numbers.get(i)%>"><%=numbers.get(i)%></option>
-		      		<%
+	    		for(String curr: numbers) {
+		      		%> 	<option value="<%=curr%>"><%=curr%></option>
+		      		<% 
 		      	}
 	      	}
 	      %>
       </select>
       <form action="/prefixes" method="post" id="getPrefix" name="getPrefix"></form>
-      <form action="/prefixes" method="get" id="getNumber" name="getNumber"></form>
     </div>
     <div style = "padding-bottom: 25px;">
       <form action="/courses" method="post" id="requestCourses">
@@ -98,12 +97,12 @@
 	    	User user = userService.getCurrentUser();
 		    if (user != null) {
 		      pageContext.setAttribute("user", user); %>
-			<p style="color:white; margin-bottom:5px; margin-top:5px;">User: ${fn:escapeXml(user.nickname)}</p> 
-			<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" style="color:white; align-content:center;">Sign out</a>
+			<p id="email">${fn:escapeXml(user.nickname)}</p> 
+			<a id="signout" href="<%=userService.createLogoutURL(request.getRequestURI())%>">Sign Out</a>
 			<%
 			} else {
 			%>
-			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
+			<a id="signin" href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log In</a>
 			<%
 		    }
 			%>
@@ -124,45 +123,43 @@
         <th>Average Grade</th>
       </tr>
       <%
-      	ArrayList<String> sections = (ArrayList<String>)session.getAttribute("courses");
-      	if(sections != null) {
-      		pageContext.setAttribute("courses", sections);
-	      	int sectionNum = sections.size()/5;
-	      	for(int i = 0; i < sectionNum; i++) {
-	      		pageContext.setAttribute("first", sections.get(5*i));
-	      		pageContext.setAttribute("second", sections.get((5*i)+1));
-	      		pageContext.setAttribute("third", sections.get((5*i)+2));
-	      		pageContext.setAttribute("fourth", sections.get((5*i)+3));
-	      		pageContext.setAttribute("fifth", sections.get((5*i)+4));
+       	ObjectifyService.register(Algorithm.Section.class);
+ 			List<Algorithm.Section> sections = ObjectifyService.ofy().load().type(Algorithm.Section.class)
+		    .filter("prefix", request.getParameter("prefix"))
+		    .filter("number", request.getParameter("number"))
+		    .list();
+ 			if(sections != null) {
+    		Iterator<Algorithm.Section> iter = sections.iterator();
+	      	while(iter.hasNext()) {
+	      		Algorithm.Section curr = iter.next();
+	      		pageContext.setAttribute("unique", curr.getUnique());
+	      		pageContext.setAttribute("prefix", curr.getPrefix());
+	      		pageContext.setAttribute("number", curr.getNumber());
+	      		pageContext.setAttribute("rmp", curr.getRMP());
+	      		pageContext.setAttribute("gpa", curr.getGPA());
 	      		%> 	<tr>
-	      				<td> ${fn:escapeXml(first)} </td>
-	      				<td>  ${fn:escapeXml(second)} </td>
-						<td>  ${fn:escapeXml(third)} </td>
-						<td>  ${fn:escapeXml(fourth)} </td>
-						<td>  ${fn:escapeXml(fifth)} </td>
+	      				<td> ${fn:escapeXml(unique)} </td>
+	      				<td>  ${fn:escapeXml(prefix)} </td>
+						<td>  ${fn:escapeXml(number)} </td>
+						<td>  ${fn:escapeXml(rmp)} </td>
+						<td>  ${fn:escapeXml(gpa)} </td>
 
 	      			</tr>
 	      		<%
 	      	}
       	}
-      %>
+ 		%>
     </table>
 
   </div>
 
-	<% if (session.getAttribute("prefixes") == null) { %>
+	<% if (session.getAttribute("prefixes") == null || session.getAttribute("numbers") == null) { %>
 	  <script language="javascript" type="text/javascript">
 	  	document.forms["getPrefix"].submit();
-        alert("Getting Initial Data- Prefixes");
-	  </script>
+/*         alert("Getting Initial Data- Prefixes");
+ */	  </script>
 	<% } %>
-	
-	<% if (session.getAttribute("numbers") == null) { %>
-	  <script language="javascript" type="text/javascript">
-	  	document.forms["getNumber"].submit();
-        alert("Getting Initial Data- Numbers");
-	  </script>
-	<% } %>
+
   <div class="footer" align="center">
 		<div class = "footerBlock">
 			<a href=index.jsp><img src="images/logo_outlined.png" alt="littytitty" style="width:100px;height:25px;"></a>

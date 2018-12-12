@@ -3,7 +3,7 @@ package ofCourse;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Section {
+public class LegacySection {
 	private int uniqueId;
 	private ArrayList<Integer> classDay = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0, 0));
 	private String startTime;
@@ -13,7 +13,7 @@ public class Section {
 	private boolean waitlisted;
 	private boolean open;
 	
-	public Section(int uniqueId, String classDays,String startTime, String endTime, boolean waitlisted, boolean open){
+	public LegacySection(int uniqueId, String classDays,String startTime, String endTime, boolean waitlisted, boolean open){
 		String[] startTimeValues = startTime.split(" ");
 		String[] endTimeValues = endTime.split(" ");
 		this.uniqueId = uniqueId;
@@ -41,7 +41,7 @@ public class Section {
 		this.open = open;
 	}
 	
-	public boolean isConflict(Section otherSection) {//not yet complete, is kind of wrong
+	public boolean isConflict(LegacySection otherSection) {//not yet complete, is kind of wrong
 		String[] startOne = startTime.split(":");
 		String[] startTwo = otherSection.startTime.split(":");
 		int startOneHour = Integer.parseInt(startOne[0]);

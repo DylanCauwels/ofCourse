@@ -12,6 +12,7 @@
 
 <%@ page import="com.googlecode.objectify.*" %>
 
+<%@ page import="ofCourse.LegacySection"%>
 
 <html>
 
@@ -27,33 +28,32 @@
   <div id="search">
     <div>
       <a>Last Name</a>
-      <select id="lastName" name="lastName" form="requestProfessors">
+      <select id="lastName" name="name" form="requestProfessors">
 	      <%
-	      	ArrayList<String> names = (ArrayList<String>)session.getAttribute("names");
-	      	if(names != null) {
- 		      	for(int i = 0; i < names.size(); i++) {
-		      		%> 	<option value="<%=names.get(i)%>"${fn:escapeXml(selected)}><%=names.get(i)%></option>
+	      	Set<String> names = (Set<String>)session.getAttribute("names");
+  			if(names != null) {	
+		      	for(String curr: names) {
+		      		%> 	<option value="<%=curr%>"><%=curr%></option>
 		      		<% 
-		      	}	      	
-	      	}
+		      	}      	
+  			}
 	      %>
       </select>
     </div>
     <div>
       <a>First Initial</a>
-      <select required name="firstInitial" form="requestProfessors">
+      <select required name="initial" form="requestProfessors">
 	      <%
-	      	ArrayList<String> initials = (ArrayList<String>)session.getAttribute("initials");
+	      	Set<String> initials = (Set<String>)session.getAttribute("initials");
 	      	if(initials != null) {
- 		      	for(int i = 0; i < initials.size(); i++) {
-		      		%> 	<option value="<%=initials.get(i)%>"><%=initials.get(i)%></option>
-		      		<%
+	    		for(String curr: initials) {
+		      		%> 	<option value="<%=curr%>"><%=curr%></option>
+		      		<% 
 		      	}
 	      	}
 	      %>
       </select>
-      <form action="/names" method="get" id="getName" name="getName"></form>
-      <form action="/names" method="post" id="getLast" name="getLast"></form>
+      <form action="/names" method="post" id="getNames" name="getNames"></form>
     </div>
     <div style = "padding-bottom: 25px;">
       <form action="/professors" method="post" id="requestProfessors">
@@ -84,12 +84,12 @@
 	    	User user = userService.getCurrentUser();
 		    if (user != null) {
 		      pageContext.setAttribute("user", user); %>
-			<p style="color:white; margin-bottom:5px; margin-top:5px;">User: ${fn:escapeXml(user.nickname)}</p> 
-			<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" style="color:white; align-content:center;">Sign out</a>
+			<p id="email">${fn:escapeXml(user.nickname)}</p> 
+			<a id="signout" href="<%=userService.createLogoutURL(request.getRequestURI())%>">Sign Out</a>
 			<%
 			} else {
 			%>
-			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
+			<a id="signin" href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log In</a>
 			<%
 		    }
 			%>
@@ -100,7 +100,7 @@
 <body align="center">
 
   <div class="main">
-    <h2 style="font-size:30px;"><% if(request.getParameter("firstInitial") != null) { %> <%= request.getParameter("lastName") %>, <%= request.getParameter("firstInitial") %> <%} %>Sections</h1>
+    <h2 style="font-size:30px;"><% if(request.getParameter("initial") != null) { %> <%= request.getParameter("name") %>, <%= request.getParameter("initial") %> <%} %>Sections</h1>
     <!-- PAGE CONTENT -->
     <table align="center" id="displaytable">
       <tr id="tableheader">
@@ -111,28 +111,32 @@
         <th>Average Grade</th>
       </tr>
       <%
-      	ArrayList<String> sections = (ArrayList<String>)session.getAttribute("professors");
-      	if(sections != null) {
-      		pageContext.setAttribute("professors", sections);
-	      	int sectionNum = sections.size()/5;
-	      	for(int i = 0; i < sectionNum; i++) {
-	      		pageContext.setAttribute("first", sections.get(5*i));
-	      		pageContext.setAttribute("second", sections.get((5*i)+1));
-	      		pageContext.setAttribute("third", sections.get((5*i)+2));
-	      		pageContext.setAttribute("fourth", sections.get((5*i)+3));
-	      		pageContext.setAttribute("fifth", sections.get((5*i)+4));
+       	ObjectifyService.register(Algorithm.Section.class);
+ 			List<Algorithm.Section> sections = ObjectifyService.ofy().load().type(Algorithm.Section.class)
+		    .filter("initial", request.getParameter("initial"))
+		    .filter("name", request.getParameter("name"))
+		    .list();
+ 			if(sections != null) {
+    		Iterator<Algorithm.Section> iter = sections.iterator();
+	      	while(iter.hasNext()) {
+	      		Algorithm.Section curr = iter.next();
+	      		pageContext.setAttribute("unique", curr.getUnique());
+	      		pageContext.setAttribute("prefix", curr.getPrefix());
+	      		pageContext.setAttribute("number", curr.getNumber());
+	      		pageContext.setAttribute("rmp", curr.getRMP());
+	      		pageContext.setAttribute("gpa", curr.getGPA());
 	      		%> 	<tr>
-	      				<td> ${fn:escapeXml(first)} </td>
-	      				<td>  ${fn:escapeXml(second)} </td>
-						<td>  ${fn:escapeXml(third)} </td>
-						<td>  ${fn:escapeXml(fourth)} </td>
-						<td>  ${fn:escapeXml(fifth)} </td>
+	      				<td> ${fn:escapeXml(unique)} </td>
+	      				<td>  ${fn:escapeXml(prefix)} </td>
+						<td>  ${fn:escapeXml(number)} </td>
+						<td>  ${fn:escapeXml(rmp)} </td>
+						<td>  ${fn:escapeXml(gpa)} </td>
 
 	      			</tr>
 	      		<%
 	      	}
       	}
-      %>
+ 		%>
     </table>
 
   </div>
@@ -146,18 +150,11 @@
 		</div>
 	</div>
 	
-	<% if (session.getAttribute("names") == null) { %>
+	<% if (session.getAttribute("initials") == null || session.getAttribute("names") == null) { %>
 	  <script language="javascript" type="text/javascript">
-	  	document.forms["getLast"].submit();
-        alert("Getting Initial Data- Names");
- 	  </script>
-	<% } %>
-
-	<% if (session.getAttribute("initials") == null) { %>
-	  <script language="javascript" type="text/javascript">
-	  	document.forms["getName"].submit();
-        alert("Getting Initial Data= Initials");
- 	  </script>
+	  	document.forms["getNames"].submit();
+/*         alert("Getting Initial Data");
+ */ 	  </script>
 	<% } %>
 </body>
 

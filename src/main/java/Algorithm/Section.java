@@ -6,26 +6,44 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-public class Section implements Comparable{
-    private int uniqueId;
-    private String classDays;
-    private String startTime;
-    private String endTime;
-    private String course;
-    private double rating;
-    private String path = "/schedule_events/";
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
+import com.googlecode.objectify.annotation.Parent;
 
-    public Section(int uniqueId, String classDays, String startTime, String endTime, String course, double Rating){
+
+@Entity
+public class Section implements Comparable{
+    @Id private long uniqueId;
+    private String classDays; //days the class meets
+    private String startTime; //time lecture starts
+    private String endTime; 	 //time lecture ends
+    private String course;
+    @Index private String prefix;    //course prefix
+    @Index private String number;    //course number
+    @Index private double rating;    //course rmp rating
+    private String path = "/schedule_events/";
+    @Index private String gpa;	     //course gpa average
+    @Index private String initial;   //instructor first initial
+    @Index private String name;		 //instructor last name
+
+    public Section(long uniqueId, String classDays, String startTime, String endTime, String course, String prefix, String number, String initial, String name){
         this.uniqueId = uniqueId;
         this.classDays = classDays;
         this.startTime = startTime;
         this.endTime = endTime;
         this.course = course;
-        // this.rating = makeRating(section.getProfRating(), section.getGradeRating());
+        this.prefix = prefix;
+        this.number = number;
+        this.initial = initial;
+        this.name = name;
     }
 
+    private Section() {}
 
-
+    public String getUnique() {return Long.toString(uniqueId);}
+    public String getGPA() {return gpa;}
+    public String getRMP() {return Double.toString(rating);}
     public void setRating(double d){
         rating = d;
     }
@@ -44,10 +62,23 @@ public class Section implements Comparable{
 
     public void setStartTime(String time){ startTime = time; }
 
+    public String getInitial() {
+    	return initial;
+    }
 
+    public String getLastName() {
+    	return name;
+    }
 
+    public String getPrefix() {
+    	return prefix;
+    }
+    
+    public String getNumber() {
+    	return number;
+    }
     public void getCalendarTime() {
-        String idString = Integer.toString(uniqueId);
+        String idString = Long.toString(uniqueId);
         while(idString.length() < 5){
             idString = "0" + idString;
         }

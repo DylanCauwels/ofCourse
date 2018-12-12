@@ -2,6 +2,7 @@ package ofCourse;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.CompositeFilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
+import com.googlecode.objectify.ObjectifyService;
 
+import static com.googlecode.objectify.ObjectifyService.ofy;
 /**
  * Servlet implementation class professorServlet
  */
@@ -17,40 +25,18 @@ import javax.servlet.http.HttpSession;
 public class professorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public professorServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sess = request.getSession();
-		ArrayList<String> sections = new ArrayList();
-		sections.add("51585");
-		sections.add("CS");
-		sections.add("345");
-		sections.add("4.5");
-		sections.add("3.93");
-		sections.add("51805");
-		sections.add("CS");
-		sections.add("386L");
-		sections.add("4.5");
-		sections.add("3.93");
-		sess.setAttribute("professors", sections);
-		response.sendRedirect("/professors.jsp?lastName=" + request.getParameter("lastName") + "&firstInitial=" + request.getParameter("firstInitial"));
+		ObjectifyService.register(Algorithm.Section.class);
+		response.sendRedirect("/professors.jsp?initial=" + request.getParameter("initial") + 
+				"&name=" + request.getParameter("name"));
+		}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ObjectifyService.register(Algorithm.Section.class);
+		Algorithm.Section section = new Algorithm.Section(Long.parseLong(request.getParameter("uniqueId")), request.getParameter("classDays"), request.getParameter("startTime"), 
+				request.getParameter("endTime"), request.getParameter("course"), request.getParameter("prefix"), request.getParameter("number"), request.getParameter("initial"), request.getParameter("name"));
+		ofy().save().entity(section).now();
+		response.sendRedirect("/index.jsp?input=success");
 	}
-
 }

@@ -3,11 +3,6 @@ html, body {
 	padding: 0;
 }
 
-h1 {
-	font-family: Times;
-	text-align: center;
-}
-
 a {
 	text-decoration: none;
 	color: White;
@@ -38,7 +33,7 @@ img {
 }
 
 p {
-	font-family: Geneva, sans-serif!important;
+	font-family: Geneva, sans-serif;
 }
 
 select {
@@ -341,3 +336,22 @@ th {
   cursor: pointer; /* Cursor on hover */
 }
 
+
+#signin {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	padding-top: 8px;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+#signout {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	align-content: center;
+}
+
+#email {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: white;
+	margin-bottom: 5px; 
+	margin-top: 5px;
+}

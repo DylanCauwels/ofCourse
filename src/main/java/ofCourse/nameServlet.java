@@ -1,6 +1,8 @@
 package ofCourse;
 import java.io.IOException;
+
 import java.util.ArrayList;
+import java.util.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,54 +11,46 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.googlecode.objectify.ObjectifyService;
+import static com.googlecode.objectify.ObjectifyService.ofy;
+
+import Algorithm.Section;
+import java.util.*;
+
 /**
  * Servlet implementation class nameServlet
  */
 @WebServlet("/names")
 public class nameServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession sess = request.getSession();
-		ArrayList<String> initials = new ArrayList();
-		initials.add("W");
-		sess.setAttribute("initials", initials);
-		response.sendRedirect("/professors.jsp?lastNamePref=" + request.getParameter("lastNamePref"));	
-		}
+	Set<String> initials;
+	Set<String> names;
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sess = request.getSession();
-		ArrayList<String> names = new ArrayList();
-		names.add("ADAIR");
-		names.add("AWAS");
-		names.add("BARBOUR");
-		names.add("BECK");
-		names.add("BREECKER");
-		names.add("CARTER");
-		names.add("COOK");
-		names.add("EVANS");
-		names.add("FAGELSON");
-		names.add("FELKNER");
-		names.add("GAGLIO");
-		names.add("HENRY");
-		names.add("LATHAM");
-		names.add("MCDONALD");
-		names.add("MCDANIEL");
-		names.add("MEADOWS");
-		names.add("MELCHER");
-		names.add("NEITZKE");
-		names.add("NEFF");
-		names.add("NEHRING");
-		names.add("OLMSTEAD");
+		List<Algorithm.Section> sections;
+		ObjectifyService.register(Algorithm.Section.class);
+		sections = ObjectifyService.ofy().load().type(Algorithm.Section.class).list();
+		
+		//instantiating HashSets
+		initials = new HashSet<String>();
+		names = new HashSet<String>();
+		//installing data in unique-driven hashset
+		for(int i = 0; i < sections.size(); i++) {
+			initials.add(sections.get(i).getInitial()); 
+			names.add(sections.get(i).getLastName()); 
+		}
+		//removing any accidental null values
+		names.remove(null);
+		initials.remove(null);
+		//setting session attributes
+		sess.setAttribute("initials", initials);
 		sess.setAttribute("names", names);
-		response.sendRedirect("/professors.jsp?lastNamePref=" + request.getParameter("lastName"));
+		response.sendRedirect("/professors.jsp?names=set");	
 	}
 }
+
 
 
