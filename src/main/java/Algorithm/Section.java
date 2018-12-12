@@ -25,7 +25,7 @@ public class Section implements Comparable{
     @Index private String prefix;    //course prefix
     @Index private String number;    //course number
     @Index private double rating;    //course rmp rating
-    private static String coursePath = "schedule_events/";
+    private static String coursePath = "src/main/webapp/schedule_events/";
     @Index private double gpa;	     //course gpa average
     @Index private String initial;   //instructor first initial
     @Index private String name;		 //instructor last name
