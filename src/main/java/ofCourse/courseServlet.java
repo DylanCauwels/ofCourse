@@ -2,6 +2,7 @@ package ofCourse;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,5 +26,13 @@ public class courseServlet extends HttpServlet {
 		response.sendRedirect("/courses.jsp?prefix=" + request.getParameter("prefix") + 
 				"&number=" + request.getParameter("number"));
 	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		CSVReader read = new CSVReader();
+		read.run();
+		List<Algorithm.Section> sections = ObjectifyService.ofy().load().type(Algorithm.Section.class).list();
+		response.sendRedirect("/index.jsp?populate=success&size=" + sections.size());
+	}
+
 
 }

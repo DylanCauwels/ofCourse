@@ -184,7 +184,11 @@ function showSlides() {
 		</form>
 	</div>
 	
-	
+	<div>
+		<form action="/courses" method="get">
+			<input type="submit" value="Populate" class="button"/>
+		</form>
+	</div>
 	
 	<!-- PAGE FOOTER -->
 	<div class="footer" align="center">

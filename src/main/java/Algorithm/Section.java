@@ -18,31 +18,45 @@ public class Section implements Comparable{
     private String classDays; //days the class meets
     private String startTime; //time lecture starts
     private String endTime; 	 //time lecture ends
-    private String course;
+    @Index private String course;
     @Index private String prefix;    //course prefix
     @Index private String number;    //course number
     @Index private double rating;    //course rmp rating
     private String path = "/schedule_events/";
-    @Index private String gpa;	     //course gpa average
+    @Index private double gpa;	     //course gpa average
     @Index private String initial;   //instructor first initial
     @Index private String name;		 //instructor last name
 
-    public Section(long uniqueId, String classDays, String startTime, String endTime, String course, String prefix, String number, String initial, String name){
+    public Section(long uniqueId, String classDays, String startTime, String endTime, String prefix, String number, String initial, String name, double rating, double gpa){
         this.uniqueId = uniqueId;
         this.classDays = classDays;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.course = course;
+        course = prefix + " " + number;
         this.prefix = prefix;
         this.number = number;
         this.initial = initial;
         this.name = name;
+        this.rating = rating;
+        this.gpa = gpa;
     }
 
-    private Section() {}
+    private Section() {
+        this.uniqueId = 00001;
+        this.classDays = "SS";
+        this.startTime = "200";
+        this.endTime = "300";
+        this.prefix = "SkE";
+        this.number = "311";
+        course = prefix + " " + number;
+        this.initial = "M";
+        this.name = "Boy";
+        this.rating = 0.1;
+        this.gpa = 0.1;
+    }
 
     public String getUnique() {return Long.toString(uniqueId);}
-    public String getGPA() {return gpa;}
+    public String getGPA() {return Double.toString(gpa);}
     public String getRMP() {return Double.toString(rating);}
     public void setRating(double d){
         rating = d;

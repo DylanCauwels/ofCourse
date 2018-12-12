@@ -35,7 +35,8 @@ public class professorServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ObjectifyService.register(Algorithm.Section.class);
 		Algorithm.Section section = new Algorithm.Section(Long.parseLong(request.getParameter("uniqueId")), request.getParameter("classDays"), request.getParameter("startTime"), 
-				request.getParameter("endTime"), request.getParameter("course"), request.getParameter("prefix"), request.getParameter("number"), request.getParameter("initial"), request.getParameter("name"));
+				request.getParameter("endTime"), request.getParameter("prefix"), request.getParameter("number"), request.getParameter("initial"), request.getParameter("name"), 
+				Double.parseDouble(request.getParameter("rating")), Double.parseDouble(request.getParameter("gpa")));
 		ofy().save().entity(section).now();
 		response.sendRedirect("/index.jsp?input=success");
 	}
