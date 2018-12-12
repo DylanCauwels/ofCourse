@@ -161,10 +161,6 @@ function showSlides() {
 				<textarea name="endTime" rows="1" cols="10"></textarea>
 			</div>
 			<div>
-				<p>course</p>
-				<textarea name="course" rows="1" cols="10"></textarea>
-			</div>
-			<div>
 				<p>prefix</p>
 				<textarea name="prefix" rows="1" cols="10"></textarea>
 			</div>
@@ -179,6 +175,14 @@ function showSlides() {
 			<div>
 				<p>name</p>
 				<textarea name="name" rows="1" cols="10"></textarea>
+			</div>
+			<div>
+				<p>rating</p>
+				<textarea name="rating" rows="1" cols="10"></textarea>
+			</div>
+			<div>
+				<p>gpa</p>
+				<textarea name="gpa" rows="1" cols="10"></textarea>
 			</div>
 			<input type="submit" value="Post" class="button"/>
 		</form>

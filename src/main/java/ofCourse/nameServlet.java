@@ -40,7 +40,7 @@ public class nameServlet extends HttpServlet {
 		//installing data in unique-driven hashset
 		for(int i = 0; i < sections.size(); i++) {
 			initials.add(sections.get(i).getInitial()); 
-			names.add(sections.get(i).getLastName()); 
+			names.add(sections.get(i).getName()); 
 		}
 		//removing any accidental null values
 		names.remove(null);

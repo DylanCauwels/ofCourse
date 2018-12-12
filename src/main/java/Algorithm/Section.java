@@ -55,8 +55,10 @@ public class Section implements Comparable{
         this.gpa = 0.1;
     }
 
-    public String getUnique() {return Long.toString(uniqueId);}
+    public String getUnique() {
+    	return Long.toString(uniqueId);}
     public String getGPA() {return Double.toString(gpa);}
+    
     public String getRMP() {return Double.toString(rating);}
     public void setRating(double d){
         rating = d;
@@ -80,7 +82,7 @@ public class Section implements Comparable{
     	return initial;
     }
 
-    public String getLastName() {
+    public String getName() {
     	return name;
     }
 

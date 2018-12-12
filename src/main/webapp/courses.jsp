@@ -133,14 +133,14 @@
 	      	while(iter.hasNext()) {
 	      		Algorithm.Section curr = iter.next();
 	      		pageContext.setAttribute("unique", curr.getUnique());
-	      		pageContext.setAttribute("prefix", curr.getPrefix());
-	      		pageContext.setAttribute("number", curr.getNumber());
+	      		pageContext.setAttribute("name", curr.getName());
+	      		pageContext.setAttribute("initial", curr.getInitial());
 	      		pageContext.setAttribute("rmp", curr.getRMP());
 	      		pageContext.setAttribute("gpa", curr.getGPA());
 	      		%> 	<tr>
 	      				<td> ${fn:escapeXml(unique)} </td>
-	      				<td>  ${fn:escapeXml(prefix)} </td>
-						<td>  ${fn:escapeXml(number)} </td>
+	      				<td>  ${fn:escapeXml(name)} </td>
+						<td>  ${fn:escapeXml(initial)} </td>
 						<td>  ${fn:escapeXml(rmp)} </td>
 						<td>  ${fn:escapeXml(gpa)} </td>
 

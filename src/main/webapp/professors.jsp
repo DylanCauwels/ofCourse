@@ -111,7 +111,31 @@
         <th>Average Grade</th>
       </tr>
       <%
+     	ObjectifyService.register(Algorithm.Section.class);
+			List<Algorithm.Section> sections = ObjectifyService.ofy().load().type(Algorithm.Section.class)
+		    .filter("name", request.getParameter("name"))
+		    .filter("initial", request.getParameter("initial"))
+		    .list();
+			if(sections != null) {
+  		Iterator<Algorithm.Section> iter = sections.iterator();
+	      	while(iter.hasNext()) {
+	      		Algorithm.Section curr = iter.next();
+	      		pageContext.setAttribute("unique", curr.getUnique());
+	      		pageContext.setAttribute("prefix", curr.getPrefix());
+	      		pageContext.setAttribute("number", curr.getNumber());
+	      		pageContext.setAttribute("rmp", curr.getRMP());
+	      		pageContext.setAttribute("gpa", curr.getGPA());
+	      		%> 	<tr>
+	      				<td> ${fn:escapeXml(unique)} </td>
+	      				<td>  ${fn:escapeXml(prefix)} </td>
+						<td>  ${fn:escapeXml(number)} </td>
+						<td>  ${fn:escapeXml(rmp)} </td>
+						<td>  ${fn:escapeXml(gpa)} </td>
 
+	      			</tr>
+	      		<%
+	      	}
+    	}
  		%>
     </table>
 
@@ -129,8 +153,8 @@
 	<% if (session.getAttribute("initials") == null || session.getAttribute("names") == null) { %>
 	  <script language="javascript" type="text/javascript">
 	  	document.forms["getNames"].submit();
-/*         alert("Getting Initial Data");
- */ 	  </script>
+        alert("Getting Initial Data");
+  	  </script>
 	<% } %>
 </body>
 

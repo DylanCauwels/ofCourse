@@ -29,9 +29,13 @@ public class courseServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CSVReader read = new CSVReader();
-		read.run();
-		List<Algorithm.Section> sections = ObjectifyService.ofy().load().type(Algorithm.Section.class).list();
-		response.sendRedirect("/index.jsp?populate=success&size=" + sections.size());
+		String result = read.run();
+		if(result == "success") {
+			List<Algorithm.Section> sections = ObjectifyService.ofy().load().type(Algorithm.Section.class).list();
+			response.sendRedirect("/index.jsp?populate=success&size=" + sections.size());
+		} else {
+			response.sendRedirect("/index.jsp?fail=" + result);
+		}
 	}
 
 
