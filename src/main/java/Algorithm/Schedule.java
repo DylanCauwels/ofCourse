@@ -23,13 +23,10 @@ public class Schedule {
         return score;
     }
     public void updateText() {
-    	boolean clear = false;
-    	for(Section s : courses) {
-    		if(!clear) {
-    			s.clearSchedule();
-    			clear = true;
-    		}
-    		s.getCalendarTime();
+    	Section.clearSchedule();
+    	
+    	for(Section sec : courses) {
+    		sec.getCalendarTime();
     	}
     }
 }
