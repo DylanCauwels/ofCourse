@@ -24,7 +24,6 @@ public class Schedule {
     }
     public void updateText() {
     	Section.clearSchedule();
-    	
     	for(Section sec : courses) {
     		sec.getCalendarTime();
     	}

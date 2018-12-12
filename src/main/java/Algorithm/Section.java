@@ -26,7 +26,7 @@ public class Section implements Comparable{
     @Index private String number;    //course number
     @Index private double rating;    //course rmp rating
     private static String coursePath = "schedule_events/";
-    @Index private String gpa;	     //course gpa average
+    @Index private double gpa;	     //course gpa average
     @Index private String initial;   //instructor first initial
     @Index private String name;		 //instructor last name
 
@@ -180,7 +180,7 @@ public class Section implements Comparable{
     		fos.flush();
     		fos.close();
 
-    		String fileContentPath = "content.txt";
+    		String fileContentPath = "contents.txt";
     		File fileContent = new File(coursePath + fileContentPath);
 
     		if(fileContent.createNewFile()){
@@ -225,7 +225,7 @@ public class Section implements Comparable{
 			}
 		}
 
-		String fileContentPath = "content.txt";
+		String fileContentPath = "contents.txt";
 		File fileContent = new File(coursePath + fileContentPath);
 
 		try{
