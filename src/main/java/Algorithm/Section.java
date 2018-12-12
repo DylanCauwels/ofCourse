@@ -25,13 +25,8 @@ public class Section implements Comparable{
     @Index private String prefix;    //course prefix
     @Index private String number;    //course number
     @Index private double rating;    //course rmp rating
-<<<<<<< HEAD
-    private String path = "/schedule_events/";
-    @Index private double gpa;	     //course gpa average
-=======
     private static String coursePath = "schedule_events/";
     @Index private String gpa;	     //course gpa average
->>>>>>> d2e32b812fa22d197bcb7277c2f97d48657407cd
     @Index private String initial;   //instructor first initial
     @Index private String name;		 //instructor last name
 
@@ -66,7 +61,7 @@ public class Section implements Comparable{
     public String getUnique() {
     	return Long.toString(uniqueId);}
     public String getGPA() {return Double.toString(gpa);}
-    
+
     public String getRMP() {return Double.toString(rating);}
     public void setRating(double d){
         rating = d;
@@ -97,7 +92,7 @@ public class Section implements Comparable{
     public String getPrefix() {
     	return prefix;
     }
-    
+
     public String getNumber() {
     	return number;
     }
@@ -160,8 +155,8 @@ public class Section implements Comparable{
 //    		if(dir.createNewFile()){
 //                System.out.println(coursePath+" File Created");
 //            }else System.out.println("File "+coursePath+" already exists");
-    		
-    		
+
+
     		String filePath = idString + ".txt";
     		File file = new File(coursePath + filePath);
 //    		try {
@@ -169,50 +164,50 @@ public class Section implements Comparable{
 //                output.write(text);
 //                output.close();
 //    		}catch(Exception e) {
-//    			System.out.println(e);	   		
-    		
+//    			System.out.println(e);
+
 //    		}
     		if(file.createNewFile()){
                 System.out.println(filePath+"  Created");
             }else {
             	System.out.println(filePath+" already exists");
             }
-    		
+
 //    		String fileName = idString + ".txt";
-//    		
+//
     		FileOutputStream fos = new FileOutputStream(coursePath + filePath);
     		fos.write(text.getBytes());
     		fos.flush();
     		fos.close();
-    		
+
     		String fileContentPath = "content.txt";
     		File fileContent = new File(coursePath + fileContentPath);
-    		
+
     		if(fileContent.createNewFile()){
                 System.out.println(fileContentPath +" Created");
             }else {
             	System.out.println("File "+ fileContentPath +" already exists");
             }
-    		
+
     		BufferedReader br = new BufferedReader(new FileReader(coursePath + fileContentPath));
     		boolean contained = false;
-    		
-    		
+
+
     		while(br.ready()) {
     			String line = br.readLine();
     			if(line.contains(idString)) {
     				contained = true;
     			}
     		}
-    		
-    		
+
+
     		if(!contained) {
     			BufferedWriter out = new BufferedWriter(new FileWriter(coursePath + fileContentPath, true));
     			out.write(idString + "\n");
                 out.close();
     		}
-            
-    		
+
+
     	}catch(Exception e) {
     		System.out.println("1" +e);
     	}
@@ -220,31 +215,31 @@ public class Section implements Comparable{
 
     public static void clearSchedule(){
     	File dir = new File(coursePath);
-		
+
 		if(!dir.exists()) {
 			try{
 				dir.mkdir();
 			}catch(Exception e) {
 				System.out.println("directory failed to make");
-				
+
 			}
 		}
-		
+
 		String fileContentPath = "content.txt";
 		File fileContent = new File(coursePath + fileContentPath);
-		
+
 		try{
 			if(fileContent.createNewFile()){
 				System.out.println(fileContentPath +" File Created");
 			}else {
 				System.out.println("File " + fileContentPath + " already exists");
 			}
-			
+
 			BufferedWriter out = new BufferedWriter(new FileWriter(coursePath + fileContentPath));
 			out.write("");
             out.close();
-			
-			
+
+
 		}catch(Exception e) {
 			System.out.println("2" + e);
 		}
