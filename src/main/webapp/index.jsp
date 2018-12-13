@@ -140,66 +140,8 @@ function showSlides() {
 			<td><img style="margin: 0px; width:200px; height:200px; overflow: hidden" src="/images/oprah.jpg"></td>
 		</tr></table>
 	</div>
-
-
-	<div>
-		<form action="/professors" method="get">
-			<div>
-				<p>U#</p>
-				<textarea name="uniqueId" rows="1" cols="10"></textarea>
-			</div>
-			<div>
-				<p>Class Days</p>
-				<textarea name="classDays" rows="1" cols="10"></textarea>
-			</div>
-			<div>
-				<p>startTime</p>
-				<textarea name="startTime" rows="1" cols="10"></textarea>
-			</div>
-			<div>
-				<p>endTime</p>
-				<textarea name="endTime" rows="1" cols="10"></textarea>
-			</div>
-			<div>
-				<p>prefix</p>
-				<textarea name="prefix" rows="1" cols="10"></textarea>
-			</div>
-			<div>
-				<p>number</p>
-				<textarea name="number" rows="1" cols="10"></textarea>
-			</div>
-			<div>
-				<p>initial</p>
-				<textarea name="initial" rows="1" cols="10"></textarea>
-			</div>
-			<div>
-				<p>name</p>
-				<textarea name="name" rows="1" cols="10"></textarea>
-			</div>
-			<div>
-				<p>rating</p>
-				<textarea name="rating" rows="1" cols="10"></textarea>
-			</div>
-			<div>
-				<p>gpa</p>
-				<textarea name="gpa" rows="1" cols="10"></textarea>
-			</div>
-			<input type="submit" value="Post" class="button"/>
-		</form>
-	</div>
 	
-	<div>
-		<form action="/courses" method="get">
-			<input type="submit" value="ParseCSV" class="button"/>
-		</form>
-	</div>
 	
-	<div>
-		<form action="/prefixes" method="get">
-			<input type="submit" value="insertIntoDatastore" clas="button"/>
-		</form>
-	
-	</div>
 	
 	<!-- PAGE FOOTER -->
 	<div class="footer" align="center">
@@ -209,8 +151,17 @@ function showSlides() {
 		<div class = "footerBlock">
 			<p>© 2018-2019 ofCourse.university, Inc., or its affiliates</p>
 		</div>
-		<!-- DELETE THE LINK BELOW -->
-		<a style="color: Black" href=error.html>Error testing link</a>
+	</div>
+	<div id="devTools">
+		<form style="margin-right: 20px;" action="/courses" method="get">
+			<button>Parse CSV</button>
+		</form>		
+		<form style="margin-right:20px;" action="/prefixes" method="get">
+			<button>Insert Datastore</button>
+		</form>
+		<form>
+			<button><a style="color:black;" href="error.html">Force Error</a></button>
+		</form>
 	</div>
 
 

@@ -28,4 +28,13 @@ public class Schedule {
     		sec.getCalendarTime();
     	}
     }
+    
+    @Override
+    public String toString() {
+    	String ret = "";
+    	for(Section course: courses) {
+    		ret += course.getUnique();
+    	}
+    	return ret;
+    }
 }

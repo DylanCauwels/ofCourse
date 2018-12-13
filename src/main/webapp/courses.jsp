@@ -44,8 +44,10 @@
       <select required name="prefix" form="requestCourses">
 	      <%
 	      	Set<String> prefixes = (Set<String>)session.getAttribute("prefixes");
-	      	if(prefixes != null) {
-	    		for(String curr: prefixes) {
+     	 	if(prefixes != null) {
+	 	      	String[] ordered = prefixes.toArray(new String[0]);	
+	 	      	Arrays.sort(ordered);
+	    		for(String curr: ordered) {
 		      		%> 	<option value="<%=curr%>"><%=curr%></option>
 		      		<% 
 		      	}
@@ -59,7 +61,9 @@
 	      <%
 	      	Set<String> numbers = (Set<String>)session.getAttribute("numbers");
 	      	if(numbers != null) {
-	    		for(String curr: numbers) {
+	      		String[] ordered = numbers.toArray(new String[0]);
+	      		Arrays.sort(ordered);
+	    		for(String curr: ordered) {
 		      		%> 	<option value="<%=curr%>"><%=curr%></option>
 		      		<% 
 		      	}
@@ -129,23 +133,23 @@
 		    .filter("number", request.getParameter("number"))
 		    .list();
  			if(sections != null) {
-    		Iterator<Algorithm.Section> iter = sections.iterator();
-	      	while(iter.hasNext()) {
-	      		Algorithm.Section curr = iter.next();
-	      		pageContext.setAttribute("unique", curr.getUnique());
-	      		pageContext.setAttribute("name", curr.getName());
-	      		pageContext.setAttribute("initial", curr.getInitial());
-	      		pageContext.setAttribute("rmp", curr.getRMP());
-	      		pageContext.setAttribute("gpa", curr.getGPA());
-	      		%> 	<tr>
-	      				<td> ${fn:escapeXml(unique)} </td>
-	      				<td>  ${fn:escapeXml(name)} </td>
-						<td>  ${fn:escapeXml(initial)} </td>
-						<td>  ${fn:escapeXml(rmp)} </td>
-						<td>  ${fn:escapeXml(gpa)} </td>
-
-	      			</tr>
-	      		<%
+	    		Iterator<Algorithm.Section> iter = sections.iterator();
+		      	while(iter.hasNext()) {
+		      		Algorithm.Section curr = iter.next();
+		      		pageContext.setAttribute("unique", curr.getUnique());
+		      		pageContext.setAttribute("name", curr.getName());
+		      		pageContext.setAttribute("initial", curr.getInitial());
+		      		pageContext.setAttribute("rmp", curr.getRMP());
+		      		pageContext.setAttribute("gpa", curr.getGPA());
+		      		%> 	<tr>
+		      				<td> ${fn:escapeXml(unique)} </td>
+		      				<td>  ${fn:escapeXml(name)} </td>
+							<td>  ${fn:escapeXml(initial)} </td>
+							<td>  ${fn:escapeXml(rmp)} </td>
+							<td>  ${fn:escapeXml(gpa)} </td>
+	
+		      			</tr>
+		      		<%
 	      	}
       	}
  		%>
@@ -156,8 +160,7 @@
 	<% if (session.getAttribute("prefixes") == null || session.getAttribute("numbers") == null) { %>
 	  <script language="javascript" type="text/javascript">
 	  	document.forms["getPrefix"].submit();
-/*         alert("Getting Initial Data- Prefixes");
- */	  </script>
+	  </script>
 	<% } %>
 
   <div class="footer" align="center">

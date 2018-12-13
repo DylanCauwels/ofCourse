@@ -12,6 +12,9 @@
 
 <%@ page import="com.googlecode.objectify.*" %>
 
+<%@ page import="Algorithm.Schedule" %>
+
+<%@ page import="Algorithm.Section" %>
 
 <%
 	String filteredSearchTerm = request.getParameter("filteredSearchTerm");
@@ -46,7 +49,7 @@
       <form action="/schedule" method="post" id="requestCourses">
 	  	<div>
 	      <a>Enter Desired Courses</a>
-	      <textarea name="title" rows="1" cols="30" style="width:90%; height:100;"></textarea>
+	      <textarea name="courses" rows="1" cols="30" style="width:80%; height:100;"></textarea>
 	    </div>
 	    <div class="slidecontainer">
 	    	<a>Schedule Weight</a>
@@ -108,13 +111,65 @@
   <div class="main">
     <div align="center">
       <h2 style="font-size:30px;">Schedule</h2>
-      <button onclick="clearSchedule()" class="button" type="button" name="">Clear Schedule</button>
     </div>
-    <div align="center">
-      <div style="width: 80%; height: 100%" id='calendar'></div>
-    </div>
+   	<table align="center" id="displaytable">
+      <tr id="tableheader">
+        <th>Unique Number</th>
+        <th>Course</th>
+        <th>Days</th>
+        <th>Time</th>
+        <th>Last Name</th>
+        <th>First Initial</th>
+        <th>RMP Rating</th>
+        <th>Average Grade</th>
+      </tr>
+	<%	
+	ArrayList<Section> courses = (ArrayList<Section>)session.getAttribute("courses");
+	if(request.getParameter("status") != null) {
+		if(courses != null && request.getParameter("status").equals("success")) {
+			Iterator<Algorithm.Section> iter = courses.iterator();
+		   	while(iter.hasNext()) {
+		   		Algorithm.Section curr = iter.next();
+		   		pageContext.setAttribute("unique", curr.getUnique());
+		   		pageContext.setAttribute("course", curr.getCourse());
+		   		pageContext.setAttribute("days", curr.getClassDays());
+		   		pageContext.setAttribute("time", curr.getTime());
+		   		pageContext.setAttribute("name", curr.getName());
+		   		pageContext.setAttribute("initial", curr.getInitial());
+		   		pageContext.setAttribute("rmp", curr.getRMP());
+		   		pageContext.setAttribute("gpa", curr.getGPA());
+		%> 	<tr>
+				<td> ${fn:escapeXml(unique)} </td>
+				<td> ${fn:escapeXml(course)} </td>
+				<td> ${fn:escapeXml(days)} </td>
+				<td> ${fn:escapeXml(time)} </td>
+				<td>  ${fn:escapeXml(name)} </td>
+				<td>  ${fn:escapeXml(initial)} </td>
+				<td>  ${fn:escapeXml(rmp)} </td>
+				<td>  ${fn:escapeXml(gpa)} </td>
+			</tr>
+		<%
+			}
+		}
+	}
+	if(request.getParameter("status") != null) {
+		if(request.getParameter("status").equals("failure")) {
+			%><h2>There is no possible combination of sections on planet earth that can solve your educational needs, Congratulations.</h2><%
+		}
+	}
+	%>
+	
+	</table>
+	
+	<div align="center" style="margin-top:100px;">
+  		<div align="center">
+    		<div style="width: 80%; height: 100%" id='calendar'></div>
+  		</div> 
+	</div>
   </div>
 
+
+  
   <div class="footer" align="center">
     <div class="footerBlock">
       <a href=index.jsp><img src="images/logo_outlined.png" alt="littytitty" style="width:100px;height:25px;"></a>

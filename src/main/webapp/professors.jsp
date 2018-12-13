@@ -32,7 +32,9 @@
 	      <%
 	      	Set<String> names = (Set<String>)session.getAttribute("names");
   			if(names != null) {	
-		      	for(String curr: names) {
+  				String[] ordered = names.toArray(new String[0]);
+  				Arrays.sort(ordered);
+		      	for(String curr: ordered) {
 		      		%> 	<option value="<%=curr%>"><%=curr%></option>
 		      		<% 
 		      	}      	
@@ -46,7 +48,9 @@
 	      <%
 	      	Set<String> initials = (Set<String>)session.getAttribute("initials");
 	      	if(initials != null) {
-	    		for(String curr: initials) {
+	      		String[] ordered = initials.toArray(new String[0]);
+	      		Arrays.sort(ordered);
+	    		for(String curr: ordered) {
 		      		%> 	<option value="<%=curr%>"><%=curr%></option>
 		      		<% 
 		      	}
@@ -110,7 +114,7 @@
         <th>RMP Rating</th>
         <th>Average Grade</th>
       </tr>
-      <%
+      <%	  
      	ObjectifyService.register(Algorithm.Section.class);
 			List<Algorithm.Section> sections = ObjectifyService.ofy().load().type(Algorithm.Section.class)
 		    .filter("name", request.getParameter("name"))
@@ -153,7 +157,6 @@
 	<% if (session.getAttribute("initials") == null || session.getAttribute("names") == null) { %>
 	  <script language="javascript" type="text/javascript">
 	  	document.forms["getNames"].submit();
-        alert("Getting Initial Data");
   	  </script>
 	<% } %>
 </body>

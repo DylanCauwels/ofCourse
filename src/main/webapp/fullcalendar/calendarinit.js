@@ -37,7 +37,7 @@ $(function() {
 '{ "title":"Test" , "start":"2018-01-02T12:30:00", "end":"2018-01-02T14:00:00" },' +
 '{ "title":"John" , "start":"2018-01-03T12:30:00", "end":"2018-01-03T14:00:00" }]}';*/
 
-var filePath = 'schedule_events/contents.txt';
+var filePath = 'WEB-INF/classes/contents.txt';
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.open("GET",filePath,false);
 xmlhttp.send(null);
@@ -48,7 +48,7 @@ var fileContent = xmlhttp.responseText;
   while(j < courses.length) {
 	//for(var i = 0; i <= courses.length; i++) {
 
-		var filePath = 'schedule_events/' + courses[j] + '.txt';
+		var filePath = 'WEB-INF/classes/' + courses[j] + '.txt';
 		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.open("GET",filePath,false);
 		xmlhttp.send(null);

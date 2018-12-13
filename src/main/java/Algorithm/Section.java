@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 
 import com.googlecode.objectify.annotation.Entity;
@@ -16,7 +18,7 @@ import com.googlecode.objectify.annotation.Parent;
 
 
 @Entity
-public class Section implements Comparable{
+public class Section implements Serializable, Comparable{
     @Id private long uniqueId;
     private String classDays; //days the class meets
     private String startTime; //time lecture starts
@@ -25,7 +27,8 @@ public class Section implements Comparable{
     @Index private String prefix;    //course prefix
     @Index private String number;    //course number
     @Index private double rating;    //course rmp rating
-    private static String coursePath = "src/main/webapp/schedule_events/";
+    //private static String coursePath = "src/main/webapp/schedule_events/";
+    private static ClassLoader cP = Thread.currentThread().getContextClassLoader();
     @Index private double gpa;	     //course gpa average
     @Index private String initial;   //instructor first initial
     @Index private String name;		 //instructor last name
@@ -58,46 +61,50 @@ public class Section implements Comparable{
         this.gpa = 0.1;
     }
 
-    public String getUnique() {
-    	return Long.toString(uniqueId);}
+    public String getUnique() {return Long.toString(uniqueId);}
     public String getGPA() {return Double.toString(gpa);}
-
     public String getRMP() {return Double.toString(rating);}
-    public void setRating(double d){
-        rating = d;
-    }
-
-    public double getRating(){
-        return rating;
-    }
-
-    public String getClassDays(){
-        return classDays;
-    }
-
-    public String getStartTime() {
-        return startTime;
-    }
-
+    public void setRating(double d){rating = d;}
+    public double getRating(){return rating;}
+    public String getClassDays(){return classDays;}
     public void setStartTime(String time){ startTime = time; }
-
-    public String getInitial() {
-    	return initial;
+    public String getInitial() {return initial;}
+    public String getName() {return name;}
+    public String getPrefix() {return prefix;}
+    public String getNumber() {return number;}
+    public String getStartTime() {return startTime;}
+   
+    public String getTime() {
+    	return parseTime(startTime) + " - " + parseTime(endTime);
     }
-
-    public String getName() {
-    	return name;
+    
+    public String parseTime(String time) {
+    	int timeInt = Integer.parseInt(time);
+    	String suffix = "am";
+    	if(timeInt > 1200) {
+    		timeInt -= 1200;
+    		suffix = "pm";
+    	}
+    	time = Integer.toString(timeInt);
+    	if(time.length() == 4)
+    		time = time.substring(0, 2) + ":" + time.substring(2, time.length()) + suffix;
+    	else
+    		time = time.substring(0, 1) + ":" + time.substring(1, time.length()) + suffix;
+    	return time;	
     }
-
-    public String getPrefix() {
-    	return prefix;
-    }
-
-    public String getNumber() {
-    	return number;
-    }
+    
     public void getCalendarTime() {
         String idString = Long.toString(uniqueId);
+        String coursePath = "";
+        URL contents = cP.getResource("contents.txt");
+        try {
+        	coursePath = contents.toURI().toString().replace("contents.txt", "");
+//        	coursePath = contents.toURI().toString();
+        }
+        catch(Exception e) {
+    		//e.printStackTrace();
+    		System.out.print("nope");
+    	}
         while(idString.length() < 5){
             idString = "0" + idString;
         }
@@ -151,48 +158,35 @@ public class Section implements Comparable{
 
 
     	try{
-//    		File dir = new File(coursePath);
-//    		if(dir.createNewFile()){
-//                System.out.println(coursePath+" File Created");
-//            }else System.out.println("File "+coursePath+" already exists");
-
-
     		String filePath = idString + ".txt";
-    		File file = new File(coursePath + filePath);
-//    		try {
-//    			BufferedWriter output = new BufferedWriter(new FileWriter(file));
-//                output.write(text);
-//                output.close();
-//    		}catch(Exception e) {
-//    			System.out.println(e);
-
-//    		}
-    		if(file.createNewFile()){
-                System.out.println(filePath+"  Created");
-            }else {
-            	System.out.println(filePath+" already exists");
-            }
-
-//    		String fileName = idString + ".txt";
-//
-    		FileOutputStream fos = new FileOutputStream(coursePath + filePath);
-    		fos.write(text.getBytes());
-    		fos.flush();
-    		fos.close();
-
+    		//File file = new File(coursePath + filePath);
+    		File file = new File(filePath);
+//    		if(file.createNewFile()){
+//                System.out.println(filePath+"  Created");
+//            }else {
+//            	System.out.println(filePath+" already exists");
+//            }
+//    		FileOutputStream fos = new FileOutputStream(coursePath + filePath);
+//    		fos.write(text.getBytes());
+//    		fos.flush();
+//    		fos.close();
+    		BufferedWriter fout = new BufferedWriter(new FileWriter(file));
+    	    fout.write(text);
+    	    fout.close();
+    		
     		String fileContentPath = "contents.txt";
-    		File fileContent = new File(coursePath + fileContentPath);
+    		File fileContent = new File(fileContentPath);
 
-    		if(fileContent.createNewFile()){
-                System.out.println(fileContentPath +" Created");
-            }else {
-            	System.out.println("File "+ fileContentPath +" already exists");
-            }
-
-    		BufferedReader br = new BufferedReader(new FileReader(coursePath + fileContentPath));
+//    		if(fileContent.createNewFile()){
+//                System.out.println(fileContentPath +" Created");
+//            }else {
+//            	System.out.println("File "+ fileContentPath +" already exists");
+//            }
+//
+    		BufferedReader br = new BufferedReader(new FileReader(fileContentPath));
     		boolean contained = false;
-
-
+//
+//
     		while(br.ready()) {
     			String line = br.readLine();
     			if(line.contains(idString)) {
@@ -200,9 +194,8 @@ public class Section implements Comparable{
     			}
     		}
 
-
     		if(!contained) {
-    			BufferedWriter out = new BufferedWriter(new FileWriter(coursePath + fileContentPath, true));
+    			BufferedWriter out = new BufferedWriter(new FileWriter(fileContent));
     			out.write(idString + "\n");
                 out.close();
     		}
@@ -214,6 +207,14 @@ public class Section implements Comparable{
     }
 
     public static void clearSchedule(){
+    	URL contents = cP.getResource("contents.txt");
+    	String coursePath = "";
+        try {
+        	coursePath = contents.toURI().toString().replace("contents.txt", "");
+//        	coursePath = contents.toURI().toString();
+        } catch(Exception e) {
+    		System.out.println("oops");
+    	}
     	File dir = new File(coursePath);
 
 		if(!dir.exists()) {

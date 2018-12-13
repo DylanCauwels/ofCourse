@@ -33,11 +33,16 @@ public class courseServlet extends HttpServlet {
 		String result = read.run();
 		if(result == "success") {
 			List<Algorithm.Section> sections = ObjectifyService.ofy().load().type(Algorithm.Section.class).list();
-			response.sendRedirect("/index.jsp?populate=success&size=" + sections.size());
+			response.sendRedirect("/index.jsp?populate=success&size=" + read.getSize());
 		} else {
 			response.sendRedirect("/index.jsp?fail=" + result);
 		}
 	}
 
 
+//	   // You can query for just keys, which will return Key objects much more efficiently than fetching whole objects
+//    Iterable<Key<Algorithm.Section>> allKeys = ObjectifyService.ofy().load().type(Algorithm.Section.class).keys();
+//
+//    // Useful for deleting items
+//    ObjectifyService.ofy().delete().keys(allKeys).now();
 }

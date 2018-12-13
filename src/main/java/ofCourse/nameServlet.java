@@ -22,8 +22,8 @@ import java.util.*;
  */
 @WebServlet("/names")
 public class nameServlet extends HttpServlet {
-	Set<String> initials;
-	Set<String> names;
+	private Set<String> initials;
+	private Set<String> names;
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -49,6 +49,12 @@ public class nameServlet extends HttpServlet {
 		sess.setAttribute("initials", initials);
 		sess.setAttribute("names", names);
 		response.sendRedirect("/professors.jsp?names=set");	
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Section sect = new Section(00000, "MWF", "1000", "1100", "EE", "314", "M", "Ebby", 1.2, 3.4);
+//		String result = sect.clearSchedule();
+		response.sendRedirect("schedule.jsp/path=" + "testMutedCurrently");
 	}
 }
 

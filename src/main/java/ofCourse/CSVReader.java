@@ -33,6 +33,7 @@ public class CSVReader {
     	
     }
     
+    public int getSize() {return queue.size();}
     public static CSVReader getCSVReader() {
     	return singleton;
     }
