@@ -190,8 +190,15 @@ function showSlides() {
 	
 	<div>
 		<form action="/courses" method="get">
-			<input type="submit" value="Populate" class="button"/>
+			<input type="submit" value="ParseCSV" class="button"/>
 		</form>
+	</div>
+	
+	<div>
+		<form action="/prefixes" method="get">
+			<input type="submit" value="insertIntoDatastore" clas="button"/>
+		</form>
+	
 	</div>
 	
 	<!-- PAGE FOOTER -->

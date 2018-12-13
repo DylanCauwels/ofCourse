@@ -36,7 +36,6 @@ public class Main {
 	        newSection.getCalendarTime();
 	        newSection2.getCalendarTime();
 	        newSection3.getCalendarTime();
-
 	    }
 
 }

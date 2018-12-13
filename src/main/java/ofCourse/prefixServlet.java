@@ -50,4 +50,10 @@ public class prefixServlet extends HttpServlet {
 		sess.setAttribute("numbers", numbers);
 		response.sendRedirect("/courses.jsp?prefixes=set");	
 	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		CSVReader read = CSVReader.getCSVReader();
+		String result = read.inputFifty();
+		response.sendRedirect("index.jsp?val=" + result);
+	}
 }
