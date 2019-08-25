@@ -3,11 +3,6 @@ html, body {
 	padding: 0;
 }
 
-h1 {
-	font-family: Times;
-	text-align: center;
-}
-
 a {
 	text-decoration: none;
 	color: White;
@@ -33,12 +28,12 @@ body {
 }
 
 img {
-	padding-top: 13pt;
-	padding-right: 20pt;
+	margin-top: 13pt;
+	margin-right: 20pt;
 }
 
 p {
-	font-family: Geneva, sans-serif!important;
+	font-family: Geneva, sans-serif;
 }
 
 select {
@@ -64,18 +59,19 @@ th {
 }
 
 .main_title {
-	color: Black;
+	color: White;
 	font-family: Geneva, sans-serif;
+	text-shadow: 2px 2px #000000;
 }
 
 .main {
 	font-family: Geneva;
-	margin-left: 200px;
+	margin-left: 250px;
 }
 
 .button {
 	font-family: Geneva, sans-serif!important;
-	font-size: 20px;
+	font-size: 25px;
 	margin-top: 25px;
 }
 
@@ -88,20 +84,28 @@ th {
 .grid-container {
 	display: grid;
 	grid-template-areas:
-		'logo professors courses classes';
+		'logo professors courses classes login';
 	grid-gap: 10px;
-	padding: 10px;
-	padding-left: 125px;
-	padding-right: 125px;
-	background-color: #BF5700;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 0px;
+/* 	padding-right: 125px;
+ */	/*background-color: #BF5700;*/
+	background-image: url(images/header_panorama.jpg);
+	background-position: center;
 	text-color: White;
 	/* font-size: 20px; */
 }
 
+#index-grid-container {
+	background-image: url(images/header_panorama.png);
+}
+
 .curr {
-	border: 5px solid #686564;
+	border: 5px solid #aaaaaa;
+	background-color: #bf5700;
 	font-style: bold;
-	background-color: #e86800;
+	display: inherit;
 }
 
 .curr a {
@@ -110,7 +114,7 @@ th {
 
 .sidenav {
     height: 100%;
-    width: 200px;
+    width: 250px;
     position:fixed;
     z-index: 1;
     top: 0;
@@ -134,29 +138,74 @@ th {
 	background-color: #cecece;
 }
 
-.grid-container div:hover {
-		background-color: #e86800;
+.titleList a:hover {
+	background-color: #e86800;
+	
+}
+
+.indexList a:hover, #index a:hover {
+	background-color: rgba(192,192,192,0.5);
 }
 
 .footer {
 	border-top: solid;
 	border-width: 1px;
 	font-size: 12px;
-	margin-top: 200px;
+	margin-top: 100px;
+	margin-left: 250px;
 }
 
 .footerBlock {
-		display: inline-block;
+	display: inline-block;
 }
 
 .title {
 	font-size: 20px;
 }
 
+.titleList {
+	display: inherit;
+	align-self: center;
+	height: 63;
+}
+
+.titleList a {
+	align-self: center;
+}
+
+.indexlist {
+	display: inherit;
+	align-self: center;
+}
+
+.indexList a {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#indexLogo {
+	width:200px;
+	height:50px;
+	margin-top: 0px;
+}
+
+/*#indexLogoLink {
+	width:300px;
+}*/
+
+/* #menu0:hover {
+	background-color: rgba(88,88,88,0.8);
+} */
+
 #menu0 {grid-area: logo}
 #menu1 {grid-area: professors;}
 #menu2 {grid-area: courses;}
 #menu3 {grid-area: classes;}
+#login {
+	grid-area: login;
+	height: 50px;
+	align-self: center;
+}
 
 #calendar {
 	font-family:Tahoma;
@@ -170,6 +219,22 @@ th {
 	text-align="center";
 	display: flex;
 	justify-content: center;
+}
+
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-left: 110px;
 }
 
 #tableheader {
@@ -207,10 +272,92 @@ th {
 
 #search {
 	border-bottom: 2px solid white;
-	padding-bottom: 20px;
 }
 
 #search div {
-	border-top: 1px dotted white;
-	margin-top: 15px;
+	margin-top: 40px;
+}
+
+.errorPageTeam {
+	border: 0;
+}
+
+.errorPageTeam td {
+	border: 0;
+}
+
+#titleShadow {
+	text-shadow: 2px 2px #f2f2f2;
+}
+
+#menu0, #menu3 {
+	border-right: 3px solid white;
+}
+
+#menu1, #login {
+	border-left: 3px solid white;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 80%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #e86800; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+
+#signin {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	padding-top: 8px;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+#signout {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	align-content: center;
+}
+
+#email {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: white;
+	margin-bottom: 5px; 
+	margin-top: 5px;
+}
+
+#devTools {
+	margin-left: 250px;
+	display: inline-flex;
 }

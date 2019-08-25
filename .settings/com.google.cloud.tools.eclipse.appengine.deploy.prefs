@@ -2,7 +2,11 @@ account.email=dm.cauwels@gmail.com
 eclipse.preferences.version=1
 include.optional.configuration.files=true
 project.bucket=
+<<<<<<< HEAD
 project.id=sylvan-replica-217121
+=======
+project.id=ofcourse-461l
+>>>>>>> front-end
 project.previousVersion.stop=true
 project.promote=true
 project.version=
